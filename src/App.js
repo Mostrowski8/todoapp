@@ -11,6 +11,7 @@ import SearchAppBar from './components/searchappbar';
 import SimpleTooltips from './components/tooltip';
 import Todos from './components/todos';
 import FormDialog from './components/popup';
+import moment from 'moment';
 
 const theme = createMuiTheme({
   typography: {
@@ -32,20 +33,20 @@ class App extends Component {
 this.state={
   todos: [],
   open: false,
-  selectedDate: new Date()
+  
 }
 this.addToDo = this.addToDo.bind(this);
 this.clearAll = this.clearAll.bind(this);
 this.handleClickOpen = this.handleClickOpen.bind(this);
 this.handleClose = this.handleClose.bind(this);
-this.handleDateChange = this.handleDateChange.bind(this);
+
  }
   
-addToDo(name){
-  let todos = this.state.todos.slice();  
-  todos.push({name: name});  
+addToDo(name, date){
+  let todos = this.state.todos.slice();
+  todos.push({name: name, date: date});  
 this.setState({
-todos: todos,
+todos: todos
 });
 }
 
@@ -54,10 +55,6 @@ clearAll(event){
 this.setState({
 todos: []
 });
-};
-
-handleDateChange = date => {
-  this.setState({ selectedDate: date });
 };
 
 handleClickOpen = () => {

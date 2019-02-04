@@ -6,15 +6,19 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import moment from 'moment';
+import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
+import MomentUtils from '@date-io/moment';
 
 export default class FormDialog extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             todoname: "",
+            date: null
            };
            this.handleChange = this.handleChange.bind(this);
+          
     }
   
 handleChange(e){
@@ -25,20 +29,17 @@ handleChange(e){
     });
     console.log("handlechane", name)
 }
-//   handleClickOpen = () => {
-//     this.setState({ open: true });
-//   };
 
-//   handleClose = () => {
-//     this.setState({ open: false });
-//   };
+handleDateChange = date => {
+  this.setState({ date: date });
+};
 
 reset(){
     this.setState({
-        todoname: ""
+        todoname: "",
+        date: null
     }); 
 }
-
 
   render() {
       let name = this.state.todoname==="";
@@ -64,12 +65,28 @@ reset(){
               type="text"
               fullWidth
             />
+           <MuiPickersUtilsProvider utils={MomentUtils}>
+           <DatePicker
+            margin="normal"
+            label="Pick date"
+            value={this.state.date}
+            onChange={this.handleDateChange}
+          /><br></br>
+          <TimePicker
+            margin="normal"
+            label="Pick hour"
+            value={this.state.date}
+            onChange={this.handleDateChange}
+          />
+
+           </MuiPickersUtilsProvider>
+            
           </DialogContent>
           <DialogActions>
             <Button onClick={(e)=>{handleClose(e)}} color="primary">
               Cancel
             </Button>
-            <Button disabled={name} onClick={(e)=>{addToDo(this.state.todoname); this.reset(); handleClose(e)}} color="primary">
+            <Button disabled={name} onClick={(e)=>{addToDo(this.state.todoname, this.state.date); this.reset(); handleClose(e)}} color="primary">
               Done
             </Button>
           </DialogActions>

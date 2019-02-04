@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Paper, Grid } from '@material-ui/core';
+import moment from 'moment';
 
 
 const styles = theme => ({
@@ -16,14 +17,39 @@ const styles = theme => ({
   paperstyle: {
     margin: 5,
     padding: 10,
-    minWidth: 250
+    Width: 250,
+    MaxWidth: 250
 },
 });
 
 const paperstyle = {
     margin: 5,
     padding: 10,
-    minWidth: 275
+    Width: 275,
+    maxWidth: 250,
+    overflowWrap: "break-word"
+}
+
+
+class Todo extends React.Component {
+constructor(props){
+super(props);
+
+}
+
+render(){
+let tododate = this.props.date;
+let day = moment(tododate).format('MMMM Do YYYY');
+let hour = moment(tododate).format('h:mm:ss a');
+
+
+return(<Fragment>
+
+<Paper style={paperstyle}><Typography style={{maxWidth: 250, overflowWrap: "break-word"}} variant="headline">{this.props.name}</Typography><br></br><Typography>Deadline:</Typography><Typography variant="caption">{day} {hour}</Typography></Paper>
+
+</Fragment>
+  )
+}
 }
 
 class Todos extends React.Component {
@@ -31,10 +57,10 @@ constructor(props){
     super(props);
 }
 
-  render(){
+render(){
 const {classes} = this.props;
 let todos = this.props.todos;
-        let todoslist = todos.map((todo, index)=> <Grid item key={todo.name+index}><Paper style={paperstyle}><Typography>{todo.name}</Typography></Paper></Grid>);
+        let todoslist = todos.map((todo, index)=> <Grid item key={todo.name+index}><Todo name={todo.name} date={todo.date}/></Grid>);
     return (   
         <div>
             <Grid container  direction="row"
