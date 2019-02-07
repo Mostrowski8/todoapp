@@ -27,6 +27,9 @@ export default class Timer extends React.Component {
                 let years = (left._data.years < 1) ? Math.abs(left._data.years) : 0;
                 let detailtimer = (years ? years + "\xa0years, " : "") + (months ? months + "\xa0months, " : "") + (days ? days + "\xa0days, " : "") + (hours ? hours + "\xa0hours, " : "") + (minutes ? minutes + "\xa0minutes, " : "") + (seconds ? seconds + "\xa0seconds." : "0 seconds");
                 detailtimer = "in " + detailtimer;
+                if (detailtimer === "in 0 seconds") {
+                    detailtimer = "Deadline passed!";
+                }
                 this.setState({
                     timeleft: detailtimer
                 })
