@@ -1,16 +1,16 @@
 {
   "main.css": "/todoapp/static/css/main.3db3aad0.chunk.css",
-  "main.js": "/todoapp/static/js/main.18d112b7.chunk.js",
-  "main.js.map": "/todoapp/static/js/main.18d112b7.chunk.js.map",
+  "main.js": "/todoapp/static/js/main.8830e3d1.chunk.js",
+  "main.js.map": "/todoapp/static/js/main.8830e3d1.chunk.js.map",
   "static/css/1.bb2d9fe2.chunk.css": "/todoapp/static/css/1.bb2d9fe2.chunk.css",
-  "static/js/1.288a85ae.chunk.js": "/todoapp/static/js/1.288a85ae.chunk.js",
-  "static/js/1.288a85ae.chunk.js.map": "/todoapp/static/js/1.288a85ae.chunk.js.map",
+  "static/js/1.bb6b76d3.chunk.js": "/todoapp/static/js/1.bb6b76d3.chunk.js",
+  "static/js/1.bb6b76d3.chunk.js.map": "/todoapp/static/js/1.bb6b76d3.chunk.js.map",
   "runtime~main.js": "/todoapp/static/js/runtime~main.ca8789d6.js",
   "runtime~main.js.map": "/todoapp/static/js/runtime~main.ca8789d6.js.map",
   "static/media/index.css": "/todoapp/static/media/roboto-latin-900italic.bc833e72.woff",
   "static/css/main.3db3aad0.chunk.css.map": "/todoapp/static/css/main.3db3aad0.chunk.css.map",
   "static/css/1.bb2d9fe2.chunk.css.map": "/todoapp/static/css/1.bb2d9fe2.chunk.css.map",
   "index.html": "/todoapp/index.html",
-  "precache-manifest.f9a4ed28e239fe8d58e768b210326e28.js": "/todoapp/precache-manifest.f9a4ed28e239fe8d58e768b210326e28.js",
+  "precache-manifest.ac0be3eec3d768fd91b6f1a19a862828.js": "/todoapp/precache-manifest.ac0be3eec3d768fd91b6f1a19a862828.js",
   "service-worker.js": "/todoapp/service-worker.js"
 }
