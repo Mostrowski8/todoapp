@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400italic.d8bcbe72.woff2"
   },
   {
-    "revision": "3ea305f197cf0a91f63c",
+    "revision": "76c832fab4e59cd8bc70",
     "url": "/todoapp/static/css/main.3db3aad0.chunk.css"
   },
   {
@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/todoapp/static/js/runtime~main.ca8789d6.js"
   },
   {
-    "revision": "987b84570ea69ee660455b8d5e91f5f1",
-    "url": "/todoapp/static/media/roboto-latin-100.987b8457.woff2"
-  },
-  {
     "revision": "e9dbbe8a693dd275c16d32feb101f1c1",
     "url": "/todoapp/static/media/roboto-latin-100.e9dbbe8a.woff"
+  },
+  {
+    "revision": "987b84570ea69ee660455b8d5e91f5f1",
+    "url": "/todoapp/static/media/roboto-latin-100.987b8457.woff2"
   },
   {
     "revision": "6232f43d15b0e7a0bf0fe82e295bdd06",
@@ -60,20 +60,20 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400.bafb105b.woff"
   },
   {
-    "revision": "3ea305f197cf0a91f63c",
-    "url": "/todoapp/static/js/main.3ea305f1.chunk.js"
+    "revision": "76c832fab4e59cd8bc70",
+    "url": "/todoapp/static/js/main.76c832fa.chunk.js"
   },
   {
     "revision": "9680d5a0c32d2fd084e07bbc4c8b2923",
     "url": "/todoapp/static/media/roboto-latin-400italic.9680d5a0.woff"
   },
   {
-    "revision": "285467176f7fe6bb6a9c6873b3dad2cc",
-    "url": "/todoapp/static/media/roboto-latin-500.28546717.woff2"
-  },
-  {
     "revision": "de8b7431b74642e830af4d4f4b513ec9",
     "url": "/todoapp/static/media/roboto-latin-500.de8b7431.woff"
+  },
+  {
+    "revision": "285467176f7fe6bb6a9c6873b3dad2cc",
+    "url": "/todoapp/static/media/roboto-latin-500.28546717.woff2"
   },
   {
     "revision": "510dec37fa69fba39593e01a469ee018",
@@ -116,7 +116,7 @@ self.__precacheManifest = [
     "url": "/todoapp/static/css/1.bb2d9fe2.chunk.css"
   },
   {
-    "revision": "47601d39d59cac39f042e6d1a6dcf47e",
+    "revision": "6971e2b7730ce04c5f7ca4feaf10afae",
     "url": "/todoapp/index.html"
   }
 ];
