@@ -27,7 +27,6 @@ handleChange(e){
     this.setState({
         todoname: name
     });
-    console.log("handlechane", name)
 }
 
 handleDateChange = date => {

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import { Typography, Paper, Grid } from '@material-ui/core';
 import moment from 'moment';
 import Timer from './timer';
@@ -18,17 +18,21 @@ const styles = theme => ({
   paperstyle: {
     margin: 5,
     padding: 10,
-    Width: 250,
-    MaxWidth: 250
+    Width: 275,
+    maxWidth: 275,
+    minWidth: 275,
+    overflowWrap: "break-word",
+    backgroundColor: "red0"
 },
 });
 
 const paperstyle = {
     margin: 5,
     padding: 10,
-    Width: 275,
-    maxWidth: 275,
-    minWidth: 275,
+    // Width: 275,
+    // maxWidth: 275,
+    // minWidth: 275,
+    width: "100%",
     overflowWrap: "break-word"
 }
 
@@ -52,8 +56,9 @@ let hour = moment(date).format('h:mm:ss a');
 let timeleft = this.state.timeleft;
 
 return(
+  
 <Fragment>
-<Paper style={paperstyle}>
+<Paper style={paperstyle} >
 <Typography style={{maxWidth: 250, overflowWrap: "break-word"}} >{this.props.name}</Typography>
 <hr></hr>
 <br></br><Typography>Deadline:</Typography>
@@ -63,11 +68,12 @@ return(
 <Timer date={date}/>
 </Paper>
 </Fragment>
+
   )
 }
 }
 
-class Todos extends React.Component {
+export default class Todos extends React.Component {
 constructor(props){
     super(props);
 }
@@ -75,10 +81,10 @@ constructor(props){
 render(){
 const {classes} = this.props;
 let todos = this.props.todos;
-        let todoslist = todos.map((todo, index)=> <Grid item key={todo.name+index}><Todo name={todo.name} date={todo.date}/></Grid>);
+        let todoslist = todos.map((todo, index)=> <Grid item md={4} sm={6} xs={12} key={todo.name+index}><Todo name={todo.name} date={todo.date}/></Grid>);
     return (   
         <div>
-        <Grid container  direction="row">
+        <Grid container spacing={24} direction="row">
         {todoslist}
         </Grid>
         </div>
@@ -91,4 +97,4 @@ Todos.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Todos);
+//export default withStyles(styles)(Todos);
