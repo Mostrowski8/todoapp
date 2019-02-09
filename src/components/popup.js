@@ -6,9 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import moment from 'moment';
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
 import MomentUtils from '@date-io/moment';
+import PropTypes from 'prop-types';
 
 export default class FormDialog extends React.Component {
     constructor(props){
@@ -42,6 +42,7 @@ reset(){
 
   render() {
       let name = this.state.todoname==="";
+      let date = this.state.date===null;
       let handleClose = this.props.handleClose;
       let addToDo = this.props.addToDo;
     return (
@@ -85,7 +86,7 @@ reset(){
             <Button onClick={(e)=>{handleClose(e)}} color="primary">
               Cancel
             </Button>
-            <Button disabled={name} onClick={(e)=>{addToDo(this.state.todoname, this.state.date); this.reset(); handleClose(e)}} color="primary">
+            <Button disabled={name, date} onClick={(e)=>{addToDo(this.state.todoname, this.state.date); this.reset(); handleClose(e)}} color="primary">
               Done
             </Button>
           </DialogActions>
