@@ -21,10 +21,15 @@ this.state = {
 }
 
 render(){
+  
 let date = this.props.date;
 let day = moment(date).format('MMMM Do YYYY');
 let hour = moment(date).format('h:mm:ss a');
 let timeleft = this.state.timeleft;
+
+
+
+
 
 return(
   
@@ -43,14 +48,27 @@ return(
 }
 }
 
+
+
+
+
 export default class Todos extends React.Component {
 constructor(props){
     super(props);
 }
 
 render(){
-let todos = this.props.todos;
-        let todoslist = todos.map((todo, index)=> <Grid item md={4} sm={6} xs={12} key={todo.name+index}><Todo name={todo.name} date={todo.date}/></Grid>);
+  let search = this.props.search;
+  let todos;
+ if (search !=="") {
+  todos = this.props.todos.filter(function (todo){return todo.name.indexOf(search) !== -1})
+ } else {
+  todos = this.props.todos;
+ }  
+
+
+
+        let todoslist = todos.map((todo, index)=> <Grid item  md={4} sm={6} xs={12} key={todo.name+index}><Todo name={todo.name} date={todo.date}/></Grid>);
     return (   
         <div>
         <Grid container spacing={24} direction="row">

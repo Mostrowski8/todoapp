@@ -10,7 +10,7 @@ import { red } from '@material-ui/core/colors';
 import SearchAppBar from './components/searchappbar';
 import SimpleTooltips from './components/tooltip';
 import Todos from './components/todos';
-import FormDialog from './components/popup';
+import Namepopup from './components/popup';
 
 
 
@@ -33,14 +33,14 @@ class App extends Component {
    super(props);
 this.state={
   todos: [],
-  open: false,
-  
+  namepopup: false,
+  search: ""
 }
 this.addToDo = this.addToDo.bind(this);
 this.clearAll = this.clearAll.bind(this);
 this.handleClickOpen = this.handleClickOpen.bind(this);
 this.handleClose = this.handleClose.bind(this);
-
+this.handleSearch = this.handleSearch.bind(this);
  }
   
 addToDo(name, date){
@@ -59,16 +59,19 @@ todos: []
 };
 
 handleClickOpen = () => {
-  this.setState({ open: true });
+  this.setState({ namepopup: true });
   console.log("handlecickopen")
 };
 
 handleClose = () => {
-  this.setState({ open: false });
+  this.setState({ namepopup: false });
   console.log("handleclose")
 };
 
-
+handleSearch(e){
+  console.log("handlesearch fired", e.target.value);
+  this.setState({search: e.target.value});
+} 
 
 
   render() {
@@ -87,10 +90,10 @@ let todoadder = this.state.todoadder;
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     </Helmet>
 
-    <SearchAppBar clearAll={this.clearAll} title="To do App"></SearchAppBar>
-    <Todos todos={todos}></Todos>
+    <SearchAppBar handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
+    <Todos search={this.state.search} todos={todos}></Todos>
     <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
-    <FormDialog open={this.state.open} handleClose={this.handleClose} addToDo={this.addToDo}></FormDialog>
+    <Namepopup open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
    
     
     

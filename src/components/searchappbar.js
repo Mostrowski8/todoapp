@@ -138,7 +138,7 @@ class SimpleMenu extends React.Component {
 
 function SearchAppBar(props) {
   const { classes } = props;
-  
+  console.log(props.handleSearch);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -153,6 +153,7 @@ function SearchAppBar(props) {
               <SearchIcon />
             </div>
             <InputBase
+            onChange={props.handleSearch}
               placeholder="Search by name"
               classes={{
                 root: classes.inputRoot,

@@ -9,13 +9,15 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
 import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
+import withMobileDialog from '@material-ui/core/withMobileDialog';
+import Datepopup from './datepopup';
 
-export default class FormDialog extends React.Component {
+export default class Namepopup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             todoname: "",
-            date: null
+            datepopup: false
            };
            this.handleChange = this.handleChange.bind(this);
           
@@ -29,65 +31,63 @@ handleChange(e){
     });
 }
 
-handleDateChange = date => {
-  this.setState({ date: date });
+handleDateOpen = () => {
+  this.setState({ datepopup: true });
+  console.log("handledatecickopen")
 };
+
+handleDateClose = () => {
+  this.setState({ datepopup: false });
+  console.log("handledateclose")
+};
+
 
 reset(){
     this.setState({
-        todoname: "",
-        date: null
+        todoname: ""
     }); 
 }
 
   render() {
       let name = this.state.todoname==="";
-      let date = this.state.date===null;
       let handleClose = this.props.handleClose;
       let addToDo = this.props.addToDo;
     return (
       <div>
         <Dialog
+        
           open={this.props.open}
           onClose={(e)=>{handleClose(e)}}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Create</DialogTitle>
+          <DialogTitle id="form-dialog-title">Create task</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Plese enter the task name below
-            </DialogContentText>
             <TextField onChange={this.handleChange}
               autoFocus
               margin="dense"
               id="todoname"
-              label="todoname"
+              label="Task name"
               type="text"
               fullWidth
             />
-           <MuiPickersUtilsProvider utils={MomentUtils}>
-           <DatePicker
-            margin="normal"
-            label="Pick date"
-            value={this.state.date}
-            onChange={this.handleDateChange}
-          /><br></br>
-          <TimePicker
-            margin="normal"
-            label="Pick hour"
-            value={this.state.date}
-            onChange={this.handleDateChange}
-          />
-
-           </MuiPickersUtilsProvider>
-            
+           
+           <Datepopup 
+           onClick={this.handleDateOpen}
+           handleClose={this.props.handleClose}
+           handleDateClose={this.handleDateClose}
+           open={this.state.datepopup}
+           addToDo={this.props.addToDo}
+           reset={this.reset}
+           name={this.state.todoname}
+           /> 
           </DialogContent>
           <DialogActions>
             <Button onClick={(e)=>{handleClose(e)}} color="primary">
               Cancel
             </Button>
-            <Button disabled={name, date} onClick={(e)=>{addToDo(this.state.todoname, this.state.date); this.reset(); handleClose(e)}} color="primary">
-              Done
+            {/* <Button disabled={name, date} onClick={(e)=>{addToDo(this.state.todoname, this.state.date); this.reset(); handleClose(e)}} color="primary"> */}
+            <Button disabled={name} onClick={(e)=>{this.handleDateOpen()}} color="primary">
+              Next
             </Button>
           </DialogActions>
         </Dialog>
@@ -95,3 +95,4 @@ reset(){
     );
   }
 }
+
