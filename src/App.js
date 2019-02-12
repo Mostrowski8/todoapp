@@ -10,7 +10,7 @@ import { red } from '@material-ui/core/colors';
 import SearchAppBar from './components/searchappbar';
 import SimpleTooltips from './components/tooltip';
 import Todos from './components/todos';
-import Namepopup from './components/popup';
+import Namepopup from './components/namepopup';
 
 
 
@@ -52,7 +52,6 @@ todos: todos
 }
 
 clearAll(event){ 
-  console.log("clearall fired");
 this.setState({
 todos: []
 });
@@ -60,16 +59,13 @@ todos: []
 
 handleClickOpen = () => {
   this.setState({ namepopup: true });
-  console.log("handlecickopen")
 };
 
 handleClose = () => {
   this.setState({ namepopup: false });
-  console.log("handleclose")
 };
 
 handleSearch(e){
-  console.log("handlesearch fired", e.target.value);
   this.setState({search: e.target.value});
 } 
 

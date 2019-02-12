@@ -33,12 +33,10 @@ handleChange(e){
 
 handleDateOpen = () => {
   this.setState({ datepopup: true });
-  console.log("handledatecickopen")
 };
 
 handleDateClose = () => {
   this.setState({ datepopup: false });
-  console.log("handledateclose")
 };
 
 
@@ -96,3 +94,7 @@ reset(){
   }
 }
 
+Namepopup.propTypes = {
+  addToDo:  PropTypes.func.isRequired,
+  handleClose:  PropTypes.func.isRequired, 
+}

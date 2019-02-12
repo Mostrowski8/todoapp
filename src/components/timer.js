@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
-//import { Typography, Paper, Grid } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import moment from 'moment';
 
@@ -66,5 +64,7 @@ handletimerclick(event){
     }
 }
 
-
+Timer.propTypes = {
+     date: PropTypes.object.isRequired
+  };
 

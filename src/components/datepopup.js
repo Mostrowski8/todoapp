@@ -17,8 +17,7 @@ export default class Datepopup extends React.Component {
         this.state = {
             date: null
            };
-           this.handleDateChange = this.handleDateChange.bind(this);
-          
+           this.handleDateChange = this.handleDateChange.bind(this);      
     }
   
 handleDateChange = date => {
@@ -77,3 +76,9 @@ reset(){
   }
 }
 
+Datepopup.propTypes = {
+  name: PropTypes.string.isRequired,
+  addToDo:  PropTypes.func.isRequired,
+  handleClose:  PropTypes.func.isRequired,
+  handleDateClose: PropTypes.func.isRequired
+}

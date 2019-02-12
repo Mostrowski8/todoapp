@@ -138,7 +138,6 @@ class SimpleMenu extends React.Component {
 
 function SearchAppBar(props) {
   const { classes } = props;
-  console.log(props.handleSearch);
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -169,6 +168,10 @@ function SearchAppBar(props) {
 
 SearchAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  search: PropTypes.string.isRequired,
+  clearAll: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(SearchAppBar);
