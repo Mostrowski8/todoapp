@@ -11,7 +11,7 @@ import SearchAppBar from './components/searchappbar';
 import SimpleTooltips from './components/tooltip';
 import Todos from './components/todos';
 import Namepopup from './components/namepopup';
-
+import Todotabs from './components/todotabs';
 
 
 const theme = createMuiTheme({
@@ -34,13 +34,15 @@ class App extends Component {
 this.state={
   todos: [],
   namepopup: false,
-  search: ""
+  search: "",
+  tab: 0
 }
 this.addToDo = this.addToDo.bind(this);
 this.clearAll = this.clearAll.bind(this);
 this.handleClickOpen = this.handleClickOpen.bind(this);
 this.handleClose = this.handleClose.bind(this);
 this.handleSearch = this.handleSearch.bind(this);
+this.handleTabChange = this.handleTabChange.bind(this);
  }
   
 addToDo(name, date){
@@ -69,10 +71,14 @@ handleSearch(e){
   this.setState({search: e.target.value});
 } 
 
+handleTabChange(event, value){
+  this.setState({tab: value});
+}
 
   render() {
     const todos = this.state.todos;
 let todoadder = this.state.todoadder;
+let tab = this.state.tab;
 
     return (<Fragment>
    <MuiThemeProvider theme={theme}>
@@ -87,12 +93,10 @@ let todoadder = this.state.todoadder;
     </Helmet>
 
     <SearchAppBar handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
-    <Todos search={this.state.search} todos={todos}></Todos>
+    <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
+    <Todos handleTabChange={this.handleTabChange} tab={tab} search={this.state.search} todos={todos}></Todos>
     <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
     <Namepopup open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
-   
-    
-    
     </div>
     </MuiThemeProvider>
     </Fragment>

@@ -47,7 +47,7 @@ handletimerclick(event){
     })
 }
 
-        componentDidMount() {
+        componentWillMount() {
             this.interval = setInterval(this.updatetime, 1000);
         }
 
