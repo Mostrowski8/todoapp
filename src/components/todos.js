@@ -6,6 +6,12 @@ import Timer from './timer';
 import Todo from './todo';
 import SwipeableViews from 'react-swipeable-views';
 
+const styles = {
+  slide: {
+    padding: 15,
+    minHeight: 100
+  }
+};
 
 export default class Todos extends React.Component {
 constructor(props){
@@ -64,15 +70,21 @@ let todoslistDone = "HERE ALL DONE";
           index={tab}
           onChangeIndex={this.props.handleTabChange}
         >
+        <div style={styles.slide}>
         <Grid container spacing={24} direction="row">
         {todoslist}
         </Grid>
+        </div>
+        <div style={styles.slide}>
         <Grid container spacing={24} direction="row">
         {todoslist}
         </Grid>
+        </div>
+        <div style={styles.slide}>
         <Grid container spacing={24} direction="row">
         {todoslist}
         </Grid>
+        </div>
         </SwipeableViews>
         </div>
       );
