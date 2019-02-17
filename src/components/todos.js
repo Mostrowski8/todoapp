@@ -66,9 +66,10 @@ let todoslistDone = "HERE ALL DONE";
     return (   
         <div>
         <SwipeableViews
+        style={{minHeight: "80vh"}}
           axis={'x'}
           index={tab}
-          onChangeIndex={this.props.handleTabChange}
+          onChangeIndex={this.props.handleChangeIndex}
         >
         <div style={styles.slide}>
         <Grid container spacing={24} direction="row">
@@ -97,7 +98,7 @@ let todoslistDone = "HERE ALL DONE";
     name: PropTypes.string.isRequired,
     date: PropTypes.object.isRequired,
     tab: PropTypes.number.isRequired,
-    handleTabChange: PropTypes.func.isRequired
+    handleChangeIndex: PropTypes.func.isRequired
    }))
  };
 

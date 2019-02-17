@@ -43,6 +43,7 @@ this.handleClickOpen = this.handleClickOpen.bind(this);
 this.handleClose = this.handleClose.bind(this);
 this.handleSearch = this.handleSearch.bind(this);
 this.handleTabChange = this.handleTabChange.bind(this);
+this.handleChangeIndex = this.handleChangeIndex.bind(this);
  }
   
 addToDo(name, date){
@@ -75,6 +76,10 @@ handleTabChange(event, value){
   this.setState({tab: value});
 }
 
+handleChangeIndex = index => {
+  this.setState({ tab: index });
+};
+
   render() {
     const todos = this.state.todos;
 let todoadder = this.state.todoadder;
@@ -94,7 +99,7 @@ let tab = this.state.tab;
 
     <SearchAppBar handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
     <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
-    <Todos handleTabChange={this.handleTabChange} tab={tab} search={this.state.search} todos={todos}></Todos>
+    <Todos handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos}></Todos>
     <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
     <Namepopup open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
     </div>
