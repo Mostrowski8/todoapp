@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400italic.d8bcbe72.woff2"
   },
   {
-    "revision": "3201beda2b3625809576",
+    "revision": "96f7c87f6aa2d685a137",
     "url": "/todoapp/static/css/main.b1c0ef50.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-900italic.bc833e72.woff"
   },
   {
-    "revision": "c757fa0bc3f7930ea17d",
-    "url": "/todoapp/static/js/1.c757fa0b.chunk.js"
+    "revision": "6593c2a3738c823e00df",
+    "url": "/todoapp/static/js/1.6593c2a3.chunk.js"
   },
   {
     "revision": "ca8789d6bb6dac684f74",
@@ -60,8 +60,8 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400.bafb105b.woff"
   },
   {
-    "revision": "3201beda2b3625809576",
-    "url": "/todoapp/static/js/main.3201beda.chunk.js"
+    "revision": "96f7c87f6aa2d685a137",
+    "url": "/todoapp/static/js/main.96f7c87f.chunk.js"
   },
   {
     "revision": "9680d5a0c32d2fd084e07bbc4c8b2923",
@@ -112,11 +112,11 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-900italic.7b770d6c.woff2"
   },
   {
-    "revision": "c757fa0bc3f7930ea17d",
+    "revision": "6593c2a3738c823e00df",
     "url": "/todoapp/static/css/1.7b2508d3.chunk.css"
   },
   {
-    "revision": "4a9bd3ee335f17d2e7e5c584cad30f95",
+    "revision": "0ec02b52b3d02716f541cd8a89d39113",
     "url": "/todoapp/index.html"
   }
 ];
