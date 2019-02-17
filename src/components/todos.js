@@ -1,8 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Paper, Grid } from '@material-ui/core';
-import moment from 'moment';
-import Timer from './timer';
+import { Grid } from '@material-ui/core';
 import Todo from './todo';
 import SwipeableViews from 'react-swipeable-views';
 
@@ -26,7 +24,7 @@ sortTodos(tab){
   switch(tab){
     case 0:
         return this.props.todos;
-        break;
+        
         case 1:
         let sortedtodos = this.props.todos.slice().sort(function(a,b){
           if (a.date < b.date)
@@ -36,10 +34,8 @@ sortTodos(tab){
         return 0;
         });
         return sortedtodos;
-        break;
         case 3:
         return [];
-        break;
         default:
         return [];
         }; 
@@ -58,7 +54,7 @@ render(){
  todos = sortedtodos;
  }  
 
-let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo id={todo.id} handleDeleteTodo={this.props.handleDeleteTodo} name={todo.name} date={todo.date}/></Grid>);
+let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo id={todo.id} handleDeleteOpen={this.props.handleDeleteOpen} name={todo.name} date={todo.date}/></Grid>);
 
     return (   
         <div>
@@ -96,8 +92,8 @@ let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={1
     date: PropTypes.object.isRequired,
     tab: PropTypes.number.isRequired,
     handleChangeIndex: PropTypes.func.isRequired,
-    handleDeleteTodo: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    handleDeleteOpen: PropTypes.func.isRequired
    }))
  };
 

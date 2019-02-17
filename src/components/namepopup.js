@@ -4,12 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
-import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Datepopup from './datepopup';
 
 export default class Namepopup extends React.Component {
@@ -70,7 +66,7 @@ reset(){
             />
            
            <Datepopup 
-           id = {this.props.id}
+           
            onClick={this.handleDateOpen}
            handleClose={this.props.handleClose}
            handleDateClose={this.handleDateClose}
@@ -97,6 +93,5 @@ reset(){
 
 Namepopup.propTypes = {
   addToDo:  PropTypes.func.isRequired,
-  handleClose:  PropTypes.func.isRequired, 
-  id: PropTypes.number.isRequired
+  handleClose:  PropTypes.func.isRequired
 }

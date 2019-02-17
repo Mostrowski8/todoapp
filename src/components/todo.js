@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Typography, Paper, Grid } from '@material-ui/core';
+import { Typography, Paper } from '@material-ui/core';
 import moment from 'moment';
 import Timer from './timer';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -32,7 +32,7 @@ let date = this.props.date;
 let day = moment(date).format('MMMM Do YYYY');
 let hour = moment(date).format('h:mm:ss a');
 let timeleft = this.state.timeleft;
-let handleDeleteTodo = this.props.handleDeleteTodo;
+let handleDeleteOpen = this.props.handleDeleteOpen;
 return(
 
 <Fragment>
@@ -46,7 +46,7 @@ return(
         </IconButton>
       </Tooltip>
       <Tooltip title="Delete">
-        <IconButton onClick={(e)=>{handleDeleteTodo(this.props.id)}} aria-label="Delete">
+        <IconButton onClick={(e)=>{handleDeleteOpen(this.props.id)}} aria-label="Delete">
           <DeleteIcon style={{fontSize: "0.7em"}} />
         </IconButton>
       </Tooltip>
@@ -56,7 +56,6 @@ return(
 <br></br><Typography>Deadline:</Typography>
 <Typography variant="caption">{day} | {hour}</Typography>
 <br></br>
-{/* <Typography variant="caption">{timeleft}</Typography> */}
 <Timer date={date}/>
 </Paper>
 </Fragment>
@@ -68,5 +67,6 @@ Todo.propTypes = {
     name: PropTypes.string.isRequired,
     date: PropTypes.object.isRequired,
     handleDeleteTodo: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired
+    id: PropTypes.number.isRequired,
+    handleDeleteOpen: PropTypes.func.isRequired
 }

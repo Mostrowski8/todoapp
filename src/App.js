@@ -4,14 +4,13 @@ import 'typeface-roboto';
 import { createMuiTheme, MuiThemeProvider, withTheme } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Helmet } from 'react-helmet'
-//import SvgIcon from '@material-ui/core/SvgIcon';
-//import {Typography, AppBar, Icon, Link, Toolbar, IconButton, InputBase} from '@material-ui/core/';
 import { red } from '@material-ui/core/colors';
 import SearchAppBar from './components/searchappbar';
 import SimpleTooltips from './components/tooltip';
 import Todos from './components/todos';
 import Namepopup from './components/namepopup';
 import Todotabs from './components/todotabs';
+import Deletpopup from './components/deletepopup';
 
 const theme = createMuiTheme({
   typography: {
@@ -35,7 +34,9 @@ this.state={
   namepopup: false,
   search: "",
   tab: 0,
-  id: 0
+  id: 0,
+  deletepopup: false,
+  todelete: null
 }
 this.addToDo = this.addToDo.bind(this);
 this.clearAll = this.clearAll.bind(this);
@@ -45,6 +46,7 @@ this.handleSearch = this.handleSearch.bind(this);
 this.handleTabChange = this.handleTabChange.bind(this);
 this.handleChangeIndex = this.handleChangeIndex.bind(this);
 this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
+this.handleDeleteOpen = this.handleDeleteOpen.bind(this);
 }
   
 addToDo(name, date){
@@ -69,8 +71,13 @@ handleClickOpen = () => {
   this.setState({ namepopup: true });
 };
 
+handleDeleteOpen (id) {
+  console.log("FIRED");
+  this.setState({ deletepopup: true, todelete: id });
+};
+
 handleClose = () => {
-  this.setState({ namepopup: false });
+  this.setState({ namepopup: false, deletepopup: false });
 };
 
 handleSearch(e){
@@ -85,8 +92,8 @@ handleChangeIndex = index => {
   this.setState({ tab: index });
 };
 
-handleDeleteTodo (id){
-  console.log("key is ", id);
+handleDeleteTodo (){
+  let id = this.state.todelete;
   let todos = this.state.todos.filter(function (todo){return todo.id !== id});
   this.setState ({todos: todos});
 }
@@ -107,12 +114,12 @@ let tab = this.state.tab;
     <title>To do App</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     </Helmet>
-
     <SearchAppBar handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
     <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
-    <Todos id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos}></Todos>
+    <Todos handleDeleteOpen={this.handleDeleteOpen} id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos}></Todos>
     <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
-    <Namepopup id={this.state.id} open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
+    <Namepopup open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
+    <Deletpopup open={this.state.deletepopup} handleClose={this.handleClose} handleDeleteTodo={this.handleDeleteTodo}></Deletpopup>
     </div>
     </MuiThemeProvider>
     </Fragment>

@@ -22,7 +22,6 @@ const styles = theme => ({
 
 function SimpleTooltips(props) {
   const { classes } = props;
-  let addtodo = props.addToDo;
   let handleClickOpen = props.handleClickOpen;
   return (
     <div onClick={(e)=>{handleClickOpen(e)}}>

@@ -4,7 +4,6 @@ import { Typography } from '@material-ui/core';
 import moment from 'moment';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
-import Fade from '@material-ui/core/Fade';
 import Collapse from '@material-ui/core/Collapse';
 
 export default class Timer extends React.Component {
