@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400italic.d8bcbe72.woff2"
   },
   {
-    "revision": "d5c9e2a7ccc045f2f3ae",
+    "revision": "3201beda2b3625809576",
     "url": "/todoapp/static/css/main.b1c0ef50.chunk.css"
   },
   {
@@ -60,8 +60,8 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400.bafb105b.woff"
   },
   {
-    "revision": "d5c9e2a7ccc045f2f3ae",
-    "url": "/todoapp/static/js/main.d5c9e2a7.chunk.js"
+    "revision": "3201beda2b3625809576",
+    "url": "/todoapp/static/js/main.3201beda.chunk.js"
   },
   {
     "revision": "9680d5a0c32d2fd084e07bbc4c8b2923",
@@ -116,7 +116,7 @@ self.__precacheManifest = [
     "url": "/todoapp/static/css/1.7b2508d3.chunk.css"
   },
   {
-    "revision": "b12c42c54d7415891cd5989e9cef433b",
+    "revision": "4a9bd3ee335f17d2e7e5c584cad30f95",
     "url": "/todoapp/index.html"
   }
 ];
