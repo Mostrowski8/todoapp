@@ -66,7 +66,7 @@ let todoslistDone = "HERE ALL DONE";
     return (   
         <div>
         <SwipeableViews
-          axis={'x-reverse'}
+          axis={'x'}
           index={tab}
           onChangeIndex={this.props.handleTabChange}
         >
