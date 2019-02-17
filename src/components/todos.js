@@ -58,10 +58,7 @@ render(){
  todos = sortedtodos;
  }  
 
-let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo name={todo.name} date={todo.date}/></Grid>);
-let todoslistByDeadline = "HERE BY DEADLINE";
-let todoslistDone = "HERE ALL DONE";
-
+let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo id={todo.id} handleDeleteTodo={this.props.handleDeleteTodo} name={todo.name} date={todo.date}/></Grid>);
 
     return (   
         <div>
@@ -98,7 +95,9 @@ let todoslistDone = "HERE ALL DONE";
     name: PropTypes.string.isRequired,
     date: PropTypes.object.isRequired,
     tab: PropTypes.number.isRequired,
-    handleChangeIndex: PropTypes.func.isRequired
+    handleChangeIndex: PropTypes.func.isRequired,
+    handleDeleteTodo: PropTypes.func.isRequired,
+    id: PropTypes.number.isRequired
    }))
  };
 

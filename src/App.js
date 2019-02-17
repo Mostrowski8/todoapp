@@ -13,7 +13,6 @@ import Todos from './components/todos';
 import Namepopup from './components/namepopup';
 import Todotabs from './components/todotabs';
 
-
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
@@ -35,7 +34,8 @@ this.state={
   todos: [],
   namepopup: false,
   search: "",
-  tab: 0
+  tab: 0,
+  id: 0
 }
 this.addToDo = this.addToDo.bind(this);
 this.clearAll = this.clearAll.bind(this);
@@ -44,14 +44,19 @@ this.handleClose = this.handleClose.bind(this);
 this.handleSearch = this.handleSearch.bind(this);
 this.handleTabChange = this.handleTabChange.bind(this);
 this.handleChangeIndex = this.handleChangeIndex.bind(this);
- }
+this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
+}
   
 addToDo(name, date){
+  let id = this.state.id + 1;
+  
   let todos = this.state.todos.slice();
-  todos.push({name: name, date: date});  
-this.setState({
-todos: todos
-});
+  todos.push({id: id, name: name, date: date});  
+  this.setState({
+  todos: todos,
+  id: id
+  });
+  console.log(todos)
 }
 
 clearAll(event){ 
@@ -80,8 +85,14 @@ handleChangeIndex = index => {
   this.setState({ tab: index });
 };
 
+handleDeleteTodo (id){
+  console.log("key is ", id);
+  let todos = this.state.todos.filter(function (todo){return todo.id !== id});
+  this.setState ({todos: todos});
+}
+
   render() {
-    const todos = this.state.todos;
+const todos = this.state.todos;
 let todoadder = this.state.todoadder;
 let tab = this.state.tab;
 
@@ -99,9 +110,9 @@ let tab = this.state.tab;
 
     <SearchAppBar handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
     <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
-    <Todos handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos}></Todos>
+    <Todos id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos}></Todos>
     <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
-    <Namepopup open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
+    <Namepopup id={this.state.id} open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
     </div>
     </MuiThemeProvider>
     </Fragment>
