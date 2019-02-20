@@ -64,7 +64,7 @@ handletimerclick(event){
  let detailtimer = this.state.detailtimer;
  let fromnow = this.state.fromnow;
         let timerstyle = {fontSize: "1em"}
-        let fromnowstyle = {fontSize: "2em", fontWeight: "700", lineHeight: "2em" }
+        let fromnowstyle = {fontSize: "2em", fontWeight: "700", lineHeight: "1em" }
 
             return(
                 <Fragment>

@@ -8,7 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 
 
-export default class Deletepopup extends React.Component {
+export default class Confirmpopup extends React.Component {
 constructor(props){
     super(props);
 }
@@ -16,28 +16,36 @@ constructor(props){
 
 
 render(){
+
+let handleConfirm;
+if (this.props.popupcontext === "Delete"){
+  handleConfirm = this.props.handleDeleteTodo;
+} else if (this.props.popupcontext === "Finish"){
+  handleConfirm = this.props.handleFinishTodo;
+}
+
     return(
 <Dialog
  open={this.props.open}
  onClose={(e)=>{this.props.handleClose(e)}}
  aria-labelledby="form-dialog-title">
-    <DialogTitle>Delete task?</DialogTitle>
+    <DialogTitle>{this.props.popupcontext} task? </DialogTitle>
     <DialogActions>
             <Button onClick={(e)=>{this.props.handleClose(e)}} color="primary">
               Cancel
             </Button>
-            <Button  onClick={(e)=>{this.props.handleDeleteTodo(); this.props.handleClose(e)}} color="primary">
+            <Button  onClick={(e)=>{handleConfirm(); this.props.handleClose(e)}} color="primary">
               Confirm
             </Button>
           </DialogActions>
 </Dialog>
     )
 }
-
-
 }
 
-Deletepopup.propTypes = {
+Confirmpopup.propTypes = {
     handleDeleteTodo:  PropTypes.func.isRequired,
+    handleFinishTodo: PropTypes.func.isRequired,
+    popupcontext: PropTypes.string,
     handleClose:  PropTypes.func.isRequired
   }

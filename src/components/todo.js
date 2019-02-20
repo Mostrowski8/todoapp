@@ -7,6 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button'
 
 
 
@@ -32,7 +33,7 @@ let date = this.props.date;
 let day = moment(date).format('MMMM Do YYYY');
 let hour = moment(date).format('h:mm:ss a');
 let timeleft = this.state.timeleft;
-let handleDeleteOpen = this.props.handleDeleteOpen;
+let handleConfirmOpen = this.props.handleConfirmOpen;
 return(
 
 <Fragment>
@@ -46,17 +47,20 @@ return(
         </IconButton>
       </Tooltip>
       <Tooltip title="Delete">
-        <IconButton onClick={(e)=>{handleDeleteOpen(this.props.id)}} aria-label="Delete">
+        <IconButton onClick={(e)=>{handleConfirmOpen(this.props.id, "Delete")}} aria-label="Delete">
           <DeleteIcon style={{fontSize: "0.7em"}} />
         </IconButton>
       </Tooltip>
       </div>
       </div>
 <hr></hr>
-<br></br><Typography>Deadline:</Typography>
+<Typography>Deadline:</Typography>
 <Typography variant="caption">{day} | {hour}</Typography>
-<br></br>
+<hr></hr>
 <Timer date={date}/>
+<div style={{textAlign: "right"}}>
+{this.props.tab !== 2 && <Button  onClick={(e)=>{handleConfirmOpen(this.props.id, "Finish")}} aria-label="Done" variant="contained" style={{display: "inline-block", marginTop: 10}} color="primary">Done</Button>}
+</div>
 </Paper>
 </Fragment>
   )
@@ -66,7 +70,7 @@ return(
 Todo.propTypes = {
     name: PropTypes.string.isRequired,
     date: PropTypes.object.isRequired,
-    handleDeleteTodo: PropTypes.func.isRequired,
     id: PropTypes.number.isRequired,
-    handleDeleteOpen: PropTypes.func.isRequired
+    handleConfirmOpen: PropTypes.func.isRequired,
+    tab: PropTypes.number.isRequired
 }

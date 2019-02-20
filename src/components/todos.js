@@ -34,8 +34,8 @@ sortTodos(tab){
         return 0;
         });
         return sortedtodos;
-        case 3:
-        return [];
+        case 2:
+        return this.props.donetodos;
         default:
         return [];
         }; 
@@ -54,7 +54,7 @@ render(){
  todos = sortedtodos;
  }  
 
-let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo id={todo.id} handleDeleteOpen={this.props.handleDeleteOpen} name={todo.name} date={todo.date}/></Grid>);
+let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo tab={this.props.tab} id={todo.id} handleConfirmOpen={this.props.handleConfirmOpen} name={todo.name} date={todo.date}/></Grid>);
 
     return (   
         <div>
@@ -86,14 +86,16 @@ let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={1
 }
 
  Todos.propTypes = {
-   search: PropTypes.string.isRequired,
-   todos: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    date: PropTypes.object.isRequired,
-    tab: PropTypes.number.isRequired,
-    handleChangeIndex: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired,
-    handleDeleteOpen: PropTypes.func.isRequired
-   }))
+  search: PropTypes.string.isRequired,
+  todos: PropTypes.arrayOf(PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  date: PropTypes.object.isRequired})),
+  tab: PropTypes.number.isRequired,
+  handleChangeIndex: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+  handleConfirmOpen: PropTypes.func.isRequired,
+  donetodos: PropTypes.arrayOf(PropTypes.shape({
+  name: PropTypes.string.isRequired,
+  date: PropTypes.object.isRequired})), 
  };
 
