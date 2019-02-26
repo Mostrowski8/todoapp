@@ -34,6 +34,9 @@ let day = moment(date).format('MMMM Do YYYY');
 let hour = moment(date).format('h:mm:ss a');
 let timeleft = this.state.timeleft;
 let handleConfirmOpen = this.props.handleConfirmOpen;
+let handleEditOpen = this.props.handleEditOpen;
+let handleClickOpen = this.props.handleClickOpen;
+
 return(
 
 <Fragment>
@@ -42,7 +45,7 @@ return(
 <div style={{maxWidth: 250, display: "inline-block", marginTop: 5}}><Typography style={{fontSize: "1.5em", maxWidth: 250, overflowWrap: "break-word"}} >{this.props.name}</Typography></div>
 <div style={{display: "inline-block", alignSelf: "right"}}>
       <Tooltip title="Edit">
-      <IconButton  aria-label="Edit">
+      <IconButton onClick={(e)=>{handleEditOpen(this.props.id); handleClickOpen()}}  aria-label="Edit">
           <EditIcon style={{fontSize: "0.7em"}} />
         </IconButton>
       </Tooltip>
@@ -72,5 +75,7 @@ Todo.propTypes = {
     date: PropTypes.object.isRequired,
     id: PropTypes.number.isRequired,
     handleConfirmOpen: PropTypes.func.isRequired,
-    tab: PropTypes.number.isRequired
+    tab: PropTypes.number.isRequired,
+    handleClickOpen: PropTypes.func.isRequired,
+    handleEditOpen: PropTypes.func.isRequired
 }

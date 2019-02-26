@@ -18,18 +18,22 @@ constructor(props){
 render(){
 
 let handleConfirm;
-if (this.props.popupcontext === "Delete"){
-  handleConfirm = this.props.handleDeleteTodo;
-} else if (this.props.popupcontext === "Finish"){
-  handleConfirm = this.props.handleFinishTodo;
-}
+let popuptext;
 
-    return(
+ if (this.props.popupcontext === "Delete"){
+   handleConfirm = this.props.handleDeleteTodo;
+   popuptext = "Delete task?";
+ } else if (this.props.popupcontext === "Finish"){
+   handleConfirm = this.props.handleFinishTodo;
+   popuptext = "Finish task?";
+ }
+
+return(
 <Dialog
  open={this.props.open}
  onClose={(e)=>{this.props.handleClose(e)}}
  aria-labelledby="form-dialog-title">
-    <DialogTitle>{this.props.popupcontext} task? </DialogTitle>
+    <DialogTitle>{popuptext}</DialogTitle>
     <DialogActions>
             <Button onClick={(e)=>{this.props.handleClose(e)}} color="primary">
               Cancel

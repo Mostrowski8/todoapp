@@ -54,7 +54,7 @@ render(){
  todos = sortedtodos;
  }  
 
-let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo tab={this.props.tab} id={todo.id} handleConfirmOpen={this.props.handleConfirmOpen} name={todo.name} date={todo.date}/></Grid>);
+let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo tab={this.props.tab} id={todo.id} handleClickOpen={this.props.handleClickOpen} handleEditOpen={this.props.handleEditOpen} handleConfirmOpen={this.props.handleConfirmOpen} name={todo.name} date={todo.date}/></Grid>);
 
     return (   
         <div>
@@ -97,5 +97,7 @@ let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={1
   donetodos: PropTypes.arrayOf(PropTypes.shape({
   name: PropTypes.string.isRequired,
   date: PropTypes.object.isRequired})), 
+  handleEditOpen: PropTypes.func.isRequired,
+  handleClickOpen: PropTypes.func.isRequired
  };
 

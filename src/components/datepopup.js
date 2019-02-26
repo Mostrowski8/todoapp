@@ -29,12 +29,26 @@ reset(){
     }); 
 }
 
+
+
   render() {
+    let editingId = this.props.editingId;
       let name = this.props.name;
       let date = this.state.date===null;
       let addToDo = this.props.addToDo;
+      let editToDo = this.props.editToDo;
       let handleClose = this.props.handleClose;
       let handleDateClose= this.props.handleDateClose;
+      let donebutton;
+      if (editingId <= 0){
+      donebutton = <Button disabled={date} onClick={(e)=>{addToDo(name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
+              Done
+        </Button>
+      } else {
+        donebutton = <Button disabled={date} onClick={(e)=>{editToDo(editingId, name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
+        Done
+  </Button> 
+      }
  
 
 
@@ -66,9 +80,10 @@ reset(){
             <Button onClick={(e)=>{handleDateClose(e)}} color="primary">
               Back
             </Button>
-            <Button disabled={date} onClick={(e)=>{addToDo(name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
+            {/* <Button disabled={date} onClick={(e)=>{addToDo(name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
               Done
-            </Button>
+            </Button> */}
+            {donebutton}
           </DialogActions>
         </Dialog>
       </div>
@@ -80,5 +95,7 @@ Datepopup.propTypes = {
   name: PropTypes.string.isRequired,
   addToDo:  PropTypes.func.isRequired,
   handleClose:  PropTypes.func.isRequired,
-  handleDateClose: PropTypes.func.isRequired
+  handleDateClose: PropTypes.func.isRequired,
+  editingId: PropTypes.number.isRequired,
+  editToDo: PropTypes.func.isRequired
 }

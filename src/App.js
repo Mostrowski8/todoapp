@@ -38,8 +38,10 @@ this.state={
   id: 0,
   confirmpopup: false,
   popupcontext: null,
-  targetid: null
+  targetid: null,
+  editingId: -1
 }
+
 this.addToDo = this.addToDo.bind(this);
 this.clearAll = this.clearAll.bind(this);
 this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -50,8 +52,10 @@ this.handleChangeIndex = this.handleChangeIndex.bind(this);
 this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
 this.handleConfirmOpen = this.handleConfirmOpen.bind(this);
 this.handleFinishTodo = this.handleFinishTodo.bind(this);
+this.editToDo = this.editToDo.bind(this);
+this.handleEditOpen = this.handleEditOpen.bind(this);
 }
-  
+ 
 addToDo(name, date){
   let id = this.state.id + 1;
   
@@ -64,18 +68,29 @@ addToDo(name, date){
   console.log(todos)
 }
 
+editToDo(id, name, date){
+  let editedTodos = this.state.todos.map(todo => (todo.id === id ? {...todo, name, date} : todo));
+  this.setState({
+    todos: editedTodos
+  })
+}
+
 clearAll(event){ 
 this.setState({
 todos: []
 });
 };
 
+handleEditOpen = (id) => {
+  this.setState({ editingId: id });
+}
+
 handleClickOpen = () => {
   this.setState({ namepopup: true });
 };
 
 handleClose = () => {
-  this.setState({ namepopup: false, confirmpopup: false, popupcontext: null });
+  this.setState({ namepopup: false, confirmpopup: false, popupcontext: null, editingId: -1 });
 };
 
 handleSearch(e){
@@ -97,7 +112,8 @@ handleConfirmOpen (id, popupcontext) {
 handleDeleteTodo (){
   let id = this.state.targetid;
   let todos = this.state.todos.filter(function (todo){return todo.id !== id});
-  this.setState ({todos: todos});
+  let donetodos = this.state.donetodos.filter(function (todo){return todo.id !== id});
+  this.setState ({todos: todos, donetodos:donetodos});
 }
 
 handleFinishTodo(){
@@ -128,9 +144,9 @@ let tab = this.state.tab;
     </Helmet>
     <SearchAppBar handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
     <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
-    <Todos handleConfirmOpen={this.handleConfirmOpen} id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos} donetodos={this.state.donetodos}></Todos>
+    <Todos handleClickOpen={this.handleClickOpen} handleEditOpen={this.handleEditOpen} handleConfirmOpen={this.handleConfirmOpen} id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos} donetodos={this.state.donetodos}></Todos>
     <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
-    <Namepopup open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
+    <Namepopup editToDo={this.editToDo} editingId={this.state.editingId} open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
     <Confirmpopup 
     popupcontext={this.state.popupcontext} 
     open={this.state.confirmpopup} 

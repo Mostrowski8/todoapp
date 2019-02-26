@@ -66,7 +66,8 @@ reset(){
             />
            
            <Datepopup 
-           
+           editToDo = {this.props.editToDo}
+           editingId = {this.props.editingId}
            onClick={this.handleDateOpen}
            handleClose={this.props.handleClose}
            handleDateClose={this.handleDateClose}
@@ -93,5 +94,7 @@ reset(){
 
 Namepopup.propTypes = {
   addToDo:  PropTypes.func.isRequired,
-  handleClose:  PropTypes.func.isRequired
+  handleClose:  PropTypes.func.isRequired,
+  editingId: PropTypes.number.isRequired,
+  editToDo: PropTypes.func.isRequired
 }
