@@ -108,6 +108,7 @@ class SimpleMenu extends React.Component {
     const { anchorEl } = this.state;
     const {classes} = this.props;
     const clearAll = this.props.clearAll;
+    const handleChangeTheme = this.props.handleChangeTheme;
     
     return (
       <div>
@@ -126,7 +127,7 @@ class SimpleMenu extends React.Component {
           onClose={this.handleClose}
           disableAutoFocusItem
         >
-          <MenuItem onClick={(e) => {this.handleClick(e); this.handleClose()}}>Change view</MenuItem>
+          <MenuItem onClick={(e) => {handleChangeTheme(); this.handleClick(e); this.handleClose()}}>Change theme</MenuItem>
           <MenuItem onClick={(e) => {this.handleClick(e); clearAll(); this.handleClose(e)}}>Clear all</MenuItem>
           <MenuItem onClick={(e) => {this.handleClick(e); this.handleClose()}}>Info</MenuItem>
         </Menu>
@@ -142,7 +143,7 @@ function SearchAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
-        <SimpleMenu clearAll={props.clearAll}></SimpleMenu>
+        <SimpleMenu handleChangeTheme={props.handleChangeTheme} clearAll={props.clearAll}></SimpleMenu>
           <Typography className={classes.title} variant="h6" color="inherit" noWrap>
            {props.title}
           </Typography>
@@ -171,7 +172,13 @@ SearchAppBar.propTypes = {
   handleSearch: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   clearAll: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  handleChangeTheme: PropTypes.func.isRequired
 };
+
+SimpleMenu.propTypes = {
+  handleChangeTheme: PropTypes.func.isRequired
+}
+
 
 export default withStyles(styles)(SearchAppBar);

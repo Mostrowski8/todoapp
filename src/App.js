@@ -11,20 +11,9 @@ import Todos from './components/todos';
 import Namepopup from './components/namepopup';
 import Todotabs from './components/todotabs';
 import Confirmpopup from './components/confirmpopup';
+import myThemes from './themes/themes.js';
 
-const theme = createMuiTheme({
-  typography: {
-    useNextVariants: true,
-  },
-  palette: {
-     primary: red,
-     type: "dark"
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
-  },
-});
+const {darkTheme, lighTheme} = myThemes;
 
 class App extends Component {
 constructor(props){
@@ -39,7 +28,8 @@ this.state={
   confirmpopup: false,
   popupcontext: null,
   targetid: null,
-  editingId: -1
+  editingId: -1,
+  darkTheme: true
 }
 
 this.addToDo = this.addToDo.bind(this);
@@ -54,18 +44,24 @@ this.handleConfirmOpen = this.handleConfirmOpen.bind(this);
 this.handleFinishTodo = this.handleFinishTodo.bind(this);
 this.editToDo = this.editToDo.bind(this);
 this.handleEditOpen = this.handleEditOpen.bind(this);
+this.handleChangeTheme = this.handleChangeTheme.bind(this);
 }
  
 addToDo(name, date){
   let id = this.state.id + 1;
-  
   let todos = this.state.todos.slice();
   todos.push({id: id, name: name, date: date});  
   this.setState({
   todos: todos,
   id: id
   });
-  console.log(todos)
+}
+
+handleChangeTheme(){
+
+  this.setState({
+    darkTheme: !this.state.darkTheme
+  })
 }
 
 editToDo(id, name, date){
@@ -77,7 +73,8 @@ editToDo(id, name, date){
 
 clearAll(event){ 
 this.setState({
-todos: []
+todos: [],
+donetodos: []
 });
 };
 
@@ -119,11 +116,9 @@ handleDeleteTodo (){
 handleFinishTodo(){
   let id = this.state.targetid;
   let donetodo = this.state.todos.find(function(todo){return todo.id === id});
-  console.log("DONTODO", donetodo)
   let todos = this.state.todos.filter(function (todo){return todo.id !== id});
   let donetodos = this.state.donetodos.slice().concat(donetodo);
   this.setState({todos:todos, donetodos:donetodos});
-  console.log("DONTODOS", donetodos)
 }
 
 render() {
@@ -131,7 +126,7 @@ const todos = this.state.todos;
 let tab = this.state.tab;
 
     return (<Fragment>
-   <MuiThemeProvider theme={theme}>
+   <MuiThemeProvider theme={this.state.darkTheme? darkTheme:lighTheme}>
     <CssBaseline />
     <div className="App">
     <Helmet>
@@ -142,7 +137,7 @@ let tab = this.state.tab;
     <title>To do App</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     </Helmet>
-    <SearchAppBar handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
+    <SearchAppBar handleChangeTheme={this.handleChangeTheme} handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
     <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
     <Todos handleClickOpen={this.handleClickOpen} handleEditOpen={this.handleEditOpen} handleConfirmOpen={this.handleConfirmOpen} id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos} donetodos={this.state.donetodos}></Todos>
     <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
