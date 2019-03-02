@@ -42,22 +42,32 @@ reset(){
     }); 
 }
 
-  render() {
+render() {
       let name = this.state.todoname==="";
       let handleClose = this.props.handleClose;
       let addToDo = this.props.addToDo;
+      let currentname;
+      let title = "Create task"
+      
+if (this.props.editingId > 0){
+let editedtodo = this.props.handleFindTodo();
+currentname = editedtodo.name;
+title = "Change name"
+console.log(currentname)
+}
+
     return (
       <div>
         <Dialog
-        
           open={this.props.open}
           onClose={(e)=>{handleClose(e)}}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Create task</DialogTitle>
+          <DialogTitle id="form-dialog-title">{title}</DialogTitle>
           <DialogContent>
             <TextField onChange={this.handleChange}
               autoFocus
+              placeholder={currentname}
               margin="dense"
               id="todoname"
               label="Task name"
@@ -66,6 +76,7 @@ reset(){
             />
            
            <Datepopup 
+           handleFindTodo = {this.props.handleFindTodo}
            editToDo = {this.props.editToDo}
            editingId = {this.props.editingId}
            onClick={this.handleDateOpen}
@@ -81,7 +92,6 @@ reset(){
             <Button onClick={(e)=>{handleClose(e)}} color="primary">
               Cancel
             </Button>
-            {/* <Button disabled={name, date} onClick={(e)=>{addToDo(this.state.todoname, this.state.date); this.reset(); handleClose(e)}} color="primary"> */}
             <Button disabled={name} onClick={(e)=>{this.handleDateOpen()}} color="primary">
               Next
             </Button>
@@ -96,5 +106,6 @@ Namepopup.propTypes = {
   addToDo:  PropTypes.func.isRequired,
   handleClose:  PropTypes.func.isRequired,
   editingId: PropTypes.number.isRequired,
-  editToDo: PropTypes.func.isRequired
+  editToDo: PropTypes.func.isRequired,
+  handleFindTodo: PropTypes.func.isRequired,
 }

@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
 import MomentUtils from '@date-io/moment';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import WithMobileDialog from '@material-ui/core/withMobileDialog';
 
@@ -14,10 +15,20 @@ export default class Datepopup extends React.Component {
         super(props);
         this.state = {
             date: null,
+            oldDate: null
            };
            this.handleDateChange = this.handleDateChange.bind(this);      
     }
-  
+
+    
+componentWillMount(){
+  if(this.props.editingId > 0) {
+  let currentdate = this.props.handleFindTodo();     
+  let oldDate = currentdate.date;
+  this.setState({oldDate:oldDate}); 
+  }
+}
+
 handleDateChange = date => {
   this.setState({ date: date });
 };
@@ -40,12 +51,16 @@ reset(){
       let handleClose = this.props.handleClose;
       let handleDateClose= this.props.handleDateClose;
       let donebutton;
+      let oldDate;
+      let title = "Set deadline";
       if (editingId <= 0){
       donebutton = <Button disabled={date} onClick={(e)=>{addToDo(name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
               Done
         </Button>
       } else {
-        donebutton = <Button disabled={date} onClick={(e)=>{editToDo(editingId, name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
+        title = "Set new deadline";
+        let mydate = this.state.date? this.state.date:this.state.oldDate;
+        donebutton = <Button onClick={(e)=>{editToDo(editingId, name, mydate); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
         Done
   </Button> 
       }
@@ -55,23 +70,24 @@ reset(){
     return (
       <div>
         <Dialog
+        styles = {{margin: 0, height: "100vh"}}
           open={this.props.open}
           onClose={(e)=>{this.reset(); handleClose(e); handleDateClose(e)}}
           aria-labelledby="form-dialog-title"
         >
-          <DialogTitle id="form-dialog-title">Set deadline</DialogTitle>
+          <DialogTitle id="form-dialog-title">{title}</DialogTitle>
           <DialogContent>
            <MuiPickersUtilsProvider utils={MomentUtils}>
            <DatePicker
             margin="normal"
             label="Pick date"
-            value={this.state.date}
+            value={this.state.date? this.state.date:this.state.oldDate}
             onChange={this.handleDateChange}
           /><br></br>
           <TimePicker
             margin="normal"
             label="Pick hour"
-            value={this.state.date}
+            value={this.state.date? this.state.date:this.state.oldDate}
             onChange={this.handleDateChange}
           />
            </MuiPickersUtilsProvider>  
@@ -80,9 +96,6 @@ reset(){
             <Button onClick={(e)=>{handleDateClose(e)}} color="primary">
               Back
             </Button>
-            {/* <Button disabled={date} onClick={(e)=>{addToDo(name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">
-              Done
-            </Button> */}
             {donebutton}
           </DialogActions>
         </Dialog>

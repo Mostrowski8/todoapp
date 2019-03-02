@@ -36,6 +36,14 @@ let timeleft = this.state.timeleft;
 let handleConfirmOpen = this.props.handleConfirmOpen;
 let handleEditOpen = this.props.handleEditOpen;
 let handleClickOpen = this.props.handleClickOpen;
+let done = this.props.done;
+let iconbutton;
+if (done === false){
+  iconbutton = <Tooltip title="Edit"><IconButton onClick={(e)=>{handleEditOpen(this.props.id); handleClickOpen()}}  aria-label="Edit">
+  <EditIcon style={{fontSize: "0.7em"}} />
+  </IconButton></Tooltip>
+}
+
 
 return(
 
@@ -44,11 +52,9 @@ return(
 <div style={{display: "flex", justifyContent: "space-between"}}>
 <div style={{maxWidth: 250, display: "inline-block", marginTop: 5}}><Typography style={{fontSize: "1.5em", maxWidth: 250, overflowWrap: "break-word"}} >{this.props.name}</Typography></div>
 <div style={{display: "inline-block", alignSelf: "right"}}>
-      <Tooltip title="Edit">
-      <IconButton onClick={(e)=>{handleEditOpen(this.props.id); handleClickOpen()}}  aria-label="Edit">
-          <EditIcon style={{fontSize: "0.7em"}} />
-        </IconButton>
-      </Tooltip>
+     
+     {iconbutton} 
+      
       <Tooltip title="Delete">
         <IconButton onClick={(e)=>{handleConfirmOpen(this.props.id, "Delete")}} aria-label="Delete">
           <DeleteIcon style={{fontSize: "0.7em"}} />
@@ -77,5 +83,6 @@ Todo.propTypes = {
     handleConfirmOpen: PropTypes.func.isRequired,
     tab: PropTypes.number.isRequired,
     handleClickOpen: PropTypes.func.isRequired,
-    handleEditOpen: PropTypes.func.isRequired
+    handleEditOpen: PropTypes.func.isRequired,
+    done: PropTypes.bool.isRequired
 }
