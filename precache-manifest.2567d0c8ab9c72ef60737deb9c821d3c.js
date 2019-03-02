@@ -4,28 +4,28 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400italic.d8bcbe72.woff2"
   },
   {
-    "revision": "b14de29bf7207f15ae40",
-    "url": "/todoapp/static/css/main.9c1bfdf5.chunk.css"
+    "revision": "4a56e77b913f41ff309c",
+    "url": "/todoapp/static/css/main.a727a57e.chunk.css"
   },
   {
-    "revision": "bc833e725c137257c2c42a789845d82f",
-    "url": "/todoapp/static/media/roboto-latin-900italic.bc833e72.woff"
+    "revision": "7b770d6c53423deb1a8e49d3c9175184",
+    "url": "/todoapp/static/media/roboto-latin-900italic.7b770d6c.woff2"
   },
   {
-    "revision": "8195b9cfd7a03ba8515d",
-    "url": "/todoapp/static/js/1.8195b9cf.chunk.js"
+    "revision": "7e989555d90ed407ab84",
+    "url": "/todoapp/static/js/1.7e989555.chunk.js"
   },
   {
     "revision": "ca8789d6bb6dac684f74",
     "url": "/todoapp/static/js/runtime~main.ca8789d6.js"
   },
   {
-    "revision": "e9dbbe8a693dd275c16d32feb101f1c1",
-    "url": "/todoapp/static/media/roboto-latin-100.e9dbbe8a.woff"
-  },
-  {
     "revision": "987b84570ea69ee660455b8d5e91f5f1",
     "url": "/todoapp/static/media/roboto-latin-100.987b8457.woff2"
+  },
+  {
+    "revision": "e9dbbe8a693dd275c16d32feb101f1c1",
+    "url": "/todoapp/static/media/roboto-latin-100.e9dbbe8a.woff"
   },
   {
     "revision": "6232f43d15b0e7a0bf0fe82e295bdd06",
@@ -60,8 +60,8 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-400.bafb105b.woff"
   },
   {
-    "revision": "b14de29bf7207f15ae40",
-    "url": "/todoapp/static/js/main.b14de29b.chunk.js"
+    "revision": "4a56e77b913f41ff309c",
+    "url": "/todoapp/static/js/main.4a56e77b.chunk.js"
   },
   {
     "revision": "9680d5a0c32d2fd084e07bbc4c8b2923",
@@ -92,12 +92,12 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-700.cf6613d1.woff"
   },
   {
-    "revision": "846d1890aee87fde5d8ced8eba360c3a",
-    "url": "/todoapp/static/media/roboto-latin-700italic.846d1890.woff"
-  },
-  {
     "revision": "010c1aeee3c6d1cbb1d5761d80353823",
     "url": "/todoapp/static/media/roboto-latin-700italic.010c1aee.woff2"
+  },
+  {
+    "revision": "846d1890aee87fde5d8ced8eba360c3a",
+    "url": "/todoapp/static/media/roboto-latin-700italic.846d1890.woff"
   },
   {
     "revision": "19b7a0adfdd4f808b53af7e2ce2ad4e5",
@@ -108,15 +108,15 @@ self.__precacheManifest = [
     "url": "/todoapp/static/media/roboto-latin-900.8c2ade50.woff"
   },
   {
-    "revision": "7b770d6c53423deb1a8e49d3c9175184",
-    "url": "/todoapp/static/media/roboto-latin-900italic.7b770d6c.woff2"
+    "revision": "bc833e725c137257c2c42a789845d82f",
+    "url": "/todoapp/static/media/roboto-latin-900italic.bc833e72.woff"
   },
   {
-    "revision": "8195b9cfd7a03ba8515d",
-    "url": "/todoapp/static/css/1.af762dc9.chunk.css"
+    "revision": "7e989555d90ed407ab84",
+    "url": "/todoapp/static/css/1.de6ab082.chunk.css"
   },
   {
-    "revision": "8dd01df0020d60f7e2888e83fc156ba1",
+    "revision": "0e30f25bb739840294e3986b9386ecfa",
     "url": "/todoapp/index.html"
   }
 ];
