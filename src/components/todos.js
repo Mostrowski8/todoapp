@@ -38,7 +38,7 @@ sortTodos(tab){
         return this.props.donetodos;
         default:
         return [];
-        }; 
+        } 
 }
 
 

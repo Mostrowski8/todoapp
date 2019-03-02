@@ -6,9 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pickers';
 import MomentUtils from '@date-io/moment';
-import moment from 'moment';
 import PropTypes from 'prop-types';
-import WithMobileDialog from '@material-ui/core/withMobileDialog';
 
 export default class Datepopup extends React.Component {
     constructor(props){
@@ -51,7 +49,6 @@ reset(){
       let handleClose = this.props.handleClose;
       let handleDateClose= this.props.handleDateClose;
       let donebutton;
-      let oldDate;
       let title = "Set deadline";
       if (editingId <= 0){
       donebutton = <Button disabled={date} onClick={(e)=>{addToDo(name, this.state.date); this.reset(); handleDateClose(e); handleClose(e)}} color="primary">

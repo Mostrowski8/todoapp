@@ -45,7 +45,6 @@ reset(){
 render() {
       let name = this.state.todoname==="";
       let handleClose = this.props.handleClose;
-      let addToDo = this.props.addToDo;
       let currentname;
       let title = "Create task"
       
@@ -53,7 +52,6 @@ if (this.props.editingId > 0){
 let editedtodo = this.props.handleFindTodo();
 currentname = editedtodo.name;
 title = "Change name"
-console.log(currentname)
 }
 
     return (

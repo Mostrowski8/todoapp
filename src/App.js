@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import './App.css';
 import 'typeface-roboto';
-import { createMuiTheme, MuiThemeProvider, withTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { Helmet } from 'react-helmet'
-import { red } from '@material-ui/core/colors';
 import SearchAppBar from './components/searchappbar';
 import SimpleTooltips from './components/tooltip';
 import Todos from './components/todos';

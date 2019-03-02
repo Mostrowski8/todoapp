@@ -85,12 +85,11 @@ const menuButton = {
 class SimpleMenu extends React.Component {
   constructor(props){
     super(props);
-    
-
+    this.state = {
+      anchorEl: null,
+    };
   }
-  state = {
-    anchorEl: null,
-  };
+ 
 
   handleClick = event => {
     
@@ -106,7 +105,6 @@ class SimpleMenu extends React.Component {
 
   render() {
     const { anchorEl } = this.state;
-    const {classes} = this.props;
     const clearAll = this.props.clearAll;
     const handleChangeTheme = this.props.handleChangeTheme;
     const handleInfoOpen = this.props.handleInfoOpen;

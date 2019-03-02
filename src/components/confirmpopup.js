@@ -1,51 +1,44 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 
 
-export default class Confirmpopup extends React.Component {
-constructor(props){
-    super(props);
-}
-
-
-
-render(){
+const Confirmpopup = (props) => {
 
 let handleConfirm;
 let popuptext;
 
- if (this.props.popupcontext === "Delete"){
-   handleConfirm = this.props.handleDeleteTodo;
-   popuptext = "Delete task?";
- } else if (this.props.popupcontext === "Finish"){
-   handleConfirm = this.props.handleFinishTodo;
-   popuptext = "Finish task?";
+ if (props.popupcontext === "Delete"){
+   handleConfirm = props.handleDeleteTodo;
+   popuptext = <DialogTitle>Delete task?</DialogTitle>;
+ } else if (props.popupcontext === "Finish"){
+   handleConfirm = props.handleFinishTodo;
+   popuptext = <DialogTitle>Finish task?</DialogTitle>;
  }
 
 return(
 <Dialog
- open={this.props.open}
- onClose={(e)=>{this.props.handleClose(e)}}
+ open={props.open}
+ onClose={(e)=>{props.handleClose(e)}}
  aria-labelledby="form-dialog-title">
-    <DialogTitle>{popuptext}</DialogTitle>
+    {popuptext}
     <DialogActions>
-            <Button onClick={(e)=>{this.props.handleClose(e)}} color="primary">
+            <Button onClick={(e)=>{props.handleClose(e)}} color="primary">
               Cancel
             </Button>
-            <Button  onClick={(e)=>{handleConfirm(); this.props.handleClose(e)}} color="primary">
+            <Button  onClick={(e)=>{handleConfirm(); props.handleClose(e)}} color="primary">
               Confirm
             </Button>
           </DialogActions>
 </Dialog>
     )
+
 }
-}
+
+
 
 Confirmpopup.propTypes = {
     handleDeleteTodo:  PropTypes.func.isRequired,
@@ -53,3 +46,5 @@ Confirmpopup.propTypes = {
     popupcontext: PropTypes.string,
     handleClose:  PropTypes.func.isRequired
   }
+
+  export default Confirmpopup

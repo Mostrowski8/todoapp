@@ -28,11 +28,9 @@ this.state = {
 }
 
 render(){
-  
 let date = this.props.date;
 let day = moment(date).format('MMMM Do YYYY');
 let hour = moment(date).format('h:mm:ss a');
-let timeleft = this.state.timeleft;
 let handleConfirmOpen = this.props.handleConfirmOpen;
 let handleEditOpen = this.props.handleEditOpen;
 let handleClickOpen = this.props.handleClickOpen;

@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -16,17 +15,15 @@ import Divider from '@material-ui/core/Divider';
 
 
 
-export default class Infopopup extends React.Component {
-    constructor(props){
-        super(props);
-    }
+ const Infopopup = (props) => {
+    
   
-    render(){
+    
  
     return(
     <Dialog
-     open={this.props.open}
-     onClose={(e)=>{this.props.handleClose(e)}}
+     open={props.open}
+     onClose={(e)=>{props.handleClose(e)}}
      aria-labelledby="form-dialog-title">
         <DialogTitle>Info</DialogTitle>
         <DialogContent>
@@ -36,31 +33,33 @@ export default class Infopopup extends React.Component {
           <List>
           <ListItem button component="a" href="https://github.com/Mostrowski8" target="_blank">
           <ListItemIcon>
-          <Giticon darkTheme={this.props.darkTheme} />
+          <Giticon darkTheme={props.darkTheme} />
           </ ListItemIcon>
           <ListItemText>Chek out my GitHub!</ListItemText>
           </ ListItem>
           <ListItem button component="a" href="https://www.linkedin.com/in/marek-ostrowski-07b555149/" target="_blank">
           <ListItemIcon>
-          <LinkedinIcon darkTheme={this.props.darkTheme} />
+          <LinkedinIcon darkTheme={props.darkTheme} />
           </ ListItemIcon>
           <ListItemText>Chek out my LinkedIn!</ListItemText>
           </ ListItem>
           </List>
        </DialogContent>
         <DialogActions>
-                <Button onClick={(e)=>{this.props.handleClose(e)}} color="primary">
+                <Button onClick={(e)=>{props.handleClose(e)}} color="primary">
                   Close
                 </Button>
               </DialogActions>
     </Dialog>
         )
-    }
+    
     }
     
     Infopopup.propTypes = {
         handleClose:  PropTypes.func.isRequired,
         darkTheme: PropTypes.bool.isRequired
       }
+
+      export default Infopopup
 
     
