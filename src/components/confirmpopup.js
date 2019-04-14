@@ -35,10 +35,7 @@ return(
           </DialogActions>
 </Dialog>
     )
-
 }
-
-
 
 Confirmpopup.propTypes = {
     handleDeleteTodo:  PropTypes.func.isRequired,

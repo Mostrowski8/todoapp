@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -8,37 +8,34 @@ import { MuiPickersUtilsProvider, TimePicker, DatePicker } from 'material-ui-pic
 import MomentUtils from '@date-io/moment';
 import PropTypes from 'prop-types';
 
-export default class Datepopup extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            date: null,
-            oldDate: null
-           };
-           this.handleDateChange = this.handleDateChange.bind(this);      
-    }
+export default class Datepopup extends Component {
+state = {
+  date: null,
+  oldDate: null
+};
 
-    
-componentWillMount(){
-  if(this.props.editingId > 0) {
-  let currentdate = this.props.handleFindTodo();     
-  let oldDate = currentdate.date;
-  this.setState({oldDate:oldDate}); 
+componentWillMount() {
+  if (this.props.editingId > 0) {
+    let currentdate = this.props.handleFindTodo();
+    let oldDate = currentdate.date;
+    this.setState({
+      oldDate: oldDate
+    });
   }
 }
 
 handleDateChange = date => {
-  this.setState({ date: date });
+  this.setState({
+    date: date
+  });
 };
 
-reset(){
-    this.setState({
-        todoname: "",
-        date: null
-    }); 
+reset = () => {
+  this.setState({
+    todoname: "",
+    date: null
+  });
 }
-
-
 
   render() {
     let editingId = this.props.editingId;

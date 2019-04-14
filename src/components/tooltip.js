@@ -5,10 +5,6 @@ import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';
 import Tooltip from '@material-ui/core/Tooltip';
 
-
-
-
-
 const styles = theme => ({
   fab: {
     margin: theme.spacing.unit * 2,
@@ -20,7 +16,7 @@ const styles = theme => ({
   },
 });
 
-function SimpleTooltips(props) {
+const SimpleTooltips=(props)=> {
   const { classes } = props;
   let handleClickOpen = props.handleClickOpen;
   return (
