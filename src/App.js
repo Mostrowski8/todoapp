@@ -15,9 +15,8 @@ import Infopopup from './components/infopopup';
 const {darkTheme, lighTheme} = myThemes;
 
 class App extends Component {
-constructor(props){
-super(props);
-this.state={
+
+state={
   todos: [],
   donetodos: [],
   namepopup: false,
@@ -32,37 +31,21 @@ this.state={
   infoOpen: false
 }
 
-this.addToDo = this.addToDo.bind(this);
-this.clearAll = this.clearAll.bind(this);
-this.handleClickOpen = this.handleClickOpen.bind(this);
-this.handleClose = this.handleClose.bind(this);
-this.handleSearch = this.handleSearch.bind(this);
-this.handleTabChange = this.handleTabChange.bind(this);
-this.handleChangeIndex = this.handleChangeIndex.bind(this);
-this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
-this.handleConfirmOpen = this.handleConfirmOpen.bind(this);
-this.handleFinishTodo = this.handleFinishTodo.bind(this);
-this.editToDo = this.editToDo.bind(this);
-this.handleEditOpen = this.handleEditOpen.bind(this);
-this.handleChangeTheme = this.handleChangeTheme.bind(this);
-this.handleInfoOpen = this.handleInfoOpen.bind(this);
-this.handleFindTodo = this.handleFindTodo.bind(this);
-}
  
-handleInfoOpen(){
+handleInfoOpen=()=>{
   this.setState({
     infoOpen: true
   })
 }
 
-handleFindTodo(){
+handleFindTodo=()=>{
   let editingId = this.state.editingId;
   let editedtodo = this.state.todos.find((todo)=>editingId===todo.id)
   console.log(editedtodo);
   return editedtodo;
 }
 
-addToDo(name, date){
+addToDo=(name, date)=>{
   let id = this.state.id + 1;
   let todos = this.state.todos.slice();
   todos.push({id: id, name: name, date: date, done: false});  
@@ -72,69 +55,68 @@ addToDo(name, date){
   });
 }
 
-handleChangeTheme(){
+handleChangeTheme=()=>{
   this.setState({
     darkTheme: !this.state.darkTheme
   })
 }
 
-editToDo(id, name, date){
+editToDo=(id, name, date)=>{
   let editedTodos = this.state.todos.map(todo => (todo.id === id ? {...todo, name, date} : todo));
   this.setState({
     todos: editedTodos
   })
 }
 
-clearAll(event){ 
+clearAll=event=>{ 
 this.setState({
 todos: [],
 donetodos: []
 });
 };
 
-handleEditOpen = (id) => {
+handleEditOpen=id=>{
   this.setState({ editingId: id });
 }
 
-handleClickOpen = () => {
+handleClickOpen=()=>{
   this.setState({ namepopup: true });
 };
 
-handleClose = () => {
+handleClose=()=>{
   this.setState({ namepopup: false, confirmpopup: false, popupcontext: null, editingId: -1, infoOpen: false });
 };
 
-handleSearch(e){
+handleSearch=e=>{
   this.setState({search: e.target.value});
 } 
 
-handleTabChange(event, value){
+handleTabChange=(event, value)=>{
   this.setState({tab: value});
 }
 
-handleChangeIndex = index => {
+handleChangeIndex=index=>{
   this.setState({ tab: index });
 };
 
-handleConfirmOpen (id, popupcontext) {
+handleConfirmOpen=(id, popupcontext)=>{
   this.setState({ popupcontext:popupcontext, confirmpopup: true, targetid: id });
 };
 
-handleDeleteTodo (){
+handleDeleteTodo=()=>{
   let id = this.state.targetid;
   let todos = this.state.todos.filter(function (todo){return todo.id !== id});
   let donetodos = this.state.donetodos.filter(function (todo){return todo.id !== id});
   this.setState ({todos: todos, donetodos:donetodos});
 }
 
-handleFinishTodo(){
+handleFinishTodo=()=>{
   let id = this.state.targetid;
   let donetodo = this.state.todos.find(function(todo){return todo.id === id});
   donetodo = {...donetodo, done:true}
   let todos = this.state.todos.filter(function (todo){return todo.id !== id});
   let donetodos = this.state.donetodos.slice().concat(donetodo);
-  this.setState({todos:todos, donetodos:donetodos});
-  
+  this.setState({todos:todos, donetodos:donetodos});  
 }
 
 render() {
