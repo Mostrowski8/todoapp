@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,10 +11,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-
-
-
-
 
 const styles = theme => ({
   root: {
@@ -81,8 +77,7 @@ const menuButton = {
     marginRight: 20
 }
 
-
-class SimpleMenu extends React.Component {
+class SimpleMenu extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -90,18 +85,13 @@ class SimpleMenu extends React.Component {
     };
   }
  
-
   handleClick = event => {
-    
     this.setState({ anchorEl: event.currentTarget });
   };
 
   handleClose = () => {
-  
     this.setState({ anchorEl: null });
   };
-
- 
 
   render() {
     const { anchorEl } = this.state;
@@ -111,14 +101,11 @@ class SimpleMenu extends React.Component {
     
     return (
       <div>
-
       <IconButton style={menuButton} color="inherit" aria-label="Open drawer" aria-owns={anchorEl ? 'simple-menu' : undefined}
           aria-haspopup="true"
           onClick={this.handleClick}>
             <MenuIcon />
       </IconButton>
-
-
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
@@ -134,7 +121,6 @@ class SimpleMenu extends React.Component {
     );
   }
 }
-
 
 function SearchAppBar(props) {
   const { classes } = props;
@@ -181,6 +167,5 @@ SimpleMenu.propTypes = {
   handleInfoOpen: PropTypes.func.isRequired,
   clearAll: PropTypes.func.isRequired
 }
-
 
 export default withStyles(styles)(SearchAppBar);

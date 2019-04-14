@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Typography, Paper } from '@material-ui/core';
 import moment from 'moment';
@@ -9,8 +9,6 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button'
 
-
-
 const paperstyle = {
     margin: 5,
     padding: 10,
@@ -18,13 +16,10 @@ const paperstyle = {
     overflowWrap: "break-word"
 }
 
-export default class Todo extends React.Component {
-constructor(props){
-super(props);
-this.state = {
+export default class Todo extends Component {
+state = {
   timeleft: null,
   detailtimeron : true
-}
 }
 
 render(){
@@ -42,17 +37,13 @@ if (done === false){
   </IconButton></Tooltip>
 }
 
-
 return(
-
 <Fragment>
 <Paper style={paperstyle} >
 <div style={{display: "flex", justifyContent: "space-between"}}>
 <div style={{maxWidth: 250, display: "inline-block", marginTop: 5}}><Typography style={{fontSize: "1.5em", maxWidth: 250, overflowWrap: "break-word"}} >{this.props.name}</Typography></div>
-<div style={{display: "inline-block", alignSelf: "right"}}>
-     
-     {iconbutton} 
-      
+<div style={{display: "inline-block", alignSelf: "right"}}>     
+     {iconbutton}   
       <Tooltip title="Delete">
         <IconButton onClick={(e)=>{handleConfirmOpen(this.props.id, "Delete")}} aria-label="Delete">
           <DeleteIcon style={{fontSize: "0.7em"}} />
