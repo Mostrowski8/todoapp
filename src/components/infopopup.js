@@ -17,9 +17,6 @@ import Divider from '@material-ui/core/Divider';
 
  const Infopopup = (props) => {
     
-  
-    
- 
     return(
     <Dialog
      open={props.open}

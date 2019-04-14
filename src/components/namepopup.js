@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,39 +8,38 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 import Datepopup from './datepopup';
 
-export default class Namepopup extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            todoname: "",
-            datepopup: false
-           };
-           this.handleChange = this.handleChange.bind(this);
-          
-    }
-  
-handleChange(e){
-    let name = e.target.value;
-    
-    this.setState({
-        todoname: name
-    });
-}
+export default class Namepopup extends Component {
+ state = {
+   todoname: "",
+   datepopup: false
+ };
 
-handleDateOpen = () => {
-  this.setState({ datepopup: true });
-};
+ handleChange = e => {
+   let name = e.target.value;
 
-handleDateClose = () => {
-  this.setState({ datepopup: false });
-};
+   this.setState({
+     todoname: name
+   });
+ }
+
+ handleDateOpen = () => {
+   this.setState({
+     datepopup: true
+   });
+ };
+
+ handleDateClose = () => {
+   this.setState({
+     datepopup: false
+   });
+ };
 
 
-reset(){
-    this.setState({
-        todoname: ""
-    }); 
-}
+ reset = () => {
+   this.setState({
+     todoname: ""
+   });
+ }
 
 render() {
       let name = this.state.todoname==="";
