@@ -20,7 +20,7 @@ constructor(props){
     this.sortTodos = this.sortTodos.bind(this);
 }
 
-sortTodos(tab){
+sortTodos=(tab)=>{
   switch(tab){
     case 0:
         return this.props.todos;
