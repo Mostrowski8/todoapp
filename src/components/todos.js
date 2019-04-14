@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@material-ui/core';
 import Todo from './todo';
@@ -11,37 +11,30 @@ const styles = {
   }
 };
 
-export default class Todos extends React.Component {
-constructor(props){
-    super(props);
-    this.state = {
-      sortedtodos: []
-    }
-    this.sortTodos = this.sortTodos.bind(this);
+export default class Todos extends Component {
+state = {
+  sortedtodos: []
 }
 
-sortTodos=(tab)=>{
-  switch(tab){
+sortTodos = tab => {
+  switch (tab) {
     case 0:
-        return this.props.todos;
-        
-        case 1:
-        let sortedtodos = this.props.todos.slice().sort(function(a,b){
-          if (a.date < b.date)
+      return this.props.todos;
+    case 1:
+      let sortedtodos = this.props.todos.slice().sort(function (a, b) {
+        if (a.date < b.date)
           return -1;
         if (a.date > b.date)
           return 1;
         return 0;
-        });
-        return sortedtodos;
-        case 2:
-        return this.props.donetodos;
-        default:
-        return [];
-        } 
+      });
+      return sortedtodos;
+    case 2:
+      return this.props.donetodos;
+    default:
+      return [];
+  }
 }
-
-
 
 render(){
   let tab = this.props.tab;
@@ -53,7 +46,6 @@ render(){
  } else {
  todos = sortedtodos;
  }  
-
 let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo tab={this.props.tab} id={todo.id} handleClickOpen={this.props.handleClickOpen} handleEditOpen={this.props.handleEditOpen} handleConfirmOpen={this.props.handleConfirmOpen} name={todo.name} done={todo.done} date={todo.date}/></Grid>);
 
     return (   

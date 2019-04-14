@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Tab, Tabs} from '@material-ui/core';
 
-export default function Todotabs (props){
+const Todotabs = (props) => {
     
 return(
 <Tabs
@@ -16,12 +16,12 @@ variant="fullWidth"
     <Tab tab={2} label="By deadline" />
     <Tab tab={3} label="Done" />
 </Tabs>
-
 )
-
 } 
 
 Todotabs.propTypes = {
     tab: PropTypes.number.isRequired,
     handleTabChange: PropTypes.func.isRequired
   };
+
+  export default Todotabs

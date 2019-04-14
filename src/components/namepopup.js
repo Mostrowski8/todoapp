@@ -34,7 +34,6 @@ export default class Namepopup extends Component {
    });
  };
 
-
  reset = () => {
    this.setState({
      todoname: ""
@@ -52,7 +51,6 @@ let editedtodo = this.props.handleFindTodo();
 currentname = editedtodo.name;
 title = "Change name"
 }
-
     return (
       <div>
         <Dialog

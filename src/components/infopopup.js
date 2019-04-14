@@ -13,8 +13,6 @@ import {Giticon, LinkedinIcon} from '../assets/icons';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 
-
-
  const Infopopup = (props) => {
     
     return(
@@ -49,7 +47,6 @@ import Divider from '@material-ui/core/Divider';
               </DialogActions>
     </Dialog>
         )
-    
     }
     
     Infopopup.propTypes = {

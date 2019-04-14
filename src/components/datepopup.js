@@ -59,8 +59,6 @@ reset = () => {
   </Button> 
       }
  
-
-
     return (
       <div>
         <Dialog
