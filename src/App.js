@@ -40,7 +40,6 @@ handleInfoOpen = () => {
 handleFindTodo = () => {
   let editingId = this.state.editingId;
   let editedtodo = this.state.todos.find((todo) => editingId === todo.id)
-  console.log(editedtodo);
   return editedtodo;
 }
 
@@ -53,6 +52,7 @@ addToDo = (name, date) => {
     date: date,
     done: false
   });
+
   this.setState({
     todos: todos,
     id: id
@@ -71,6 +71,7 @@ editToDo = (id, name, date) => {
     name,
     date
   } : todo));
+
   this.setState({
     todos: editedTodos
   })
@@ -136,9 +137,11 @@ handleDeleteTodo = () => {
   let todos = this.state.todos.filter(function (todo) {
     return todo.id !== id
   });
+
   let donetodos = this.state.donetodos.filter(function (todo) {
     return todo.id !== id
   });
+
   this.setState({
     todos: todos,
     donetodos: donetodos
@@ -150,13 +153,16 @@ handleFinishTodo = () => {
   let donetodo = this.state.todos.find(function (todo) {
     return todo.id === id
   });
+
   donetodo = {
     ...donetodo,
     done: true
   }
+
   let todos = this.state.todos.filter(function (todo) {
     return todo.id !== id
   });
+
   let donetodos = this.state.donetodos.slice().concat(donetodo);
   this.setState({
     todos: todos,
@@ -168,36 +174,36 @@ render() {
 const todos = this.state.todos;
 let tab = this.state.tab;
 
-    return (<Fragment>
+return (
+  <Fragment>
    <MuiThemeProvider theme={this.state.darkTheme? darkTheme:lighTheme}>
     <CssBaseline />
     <div className="App">
-    <Helmet>
-    <meta 
-    charSet="utf-8" 
-    name="viewport"
-    content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
-    <title>To do App</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    </Helmet>
-    <SearchAppBar handleInfoOpen={this.handleInfoOpen} handleChangeTheme={this.handleChangeTheme} handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
-    <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
-    <Todos handleClickOpen={this.handleClickOpen} handleEditOpen={this.handleEditOpen} handleConfirmOpen={this.handleConfirmOpen} id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos} donetodos={this.state.donetodos}></Todos>
-    <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
-    <Namepopup handleFindTodo={this.handleFindTodo} editToDo={this.editToDo} editingId={this.state.editingId} open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
-    <Infopopup darkTheme={this.state.darkTheme} open={this.state.infoOpen} handleClose={this.handleClose}></Infopopup>
-    <Confirmpopup 
-    popupcontext={this.state.popupcontext} 
-    open={this.state.confirmpopup} 
-    handleClose={this.handleClose} 
-    handleFinishTodo={this.handleFinishTodo} 
-    handleDeleteTodo={this.handleDeleteTodo}>
-    </Confirmpopup>
-    </div>
-    </MuiThemeProvider>
-    </Fragment>
-    );
-  }
+      <Helmet>
+        <meta 
+        charSet="utf-8" 
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no" />
+        <title>To do App</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+      </Helmet>
+      <SearchAppBar handleInfoOpen={this.handleInfoOpen} handleChangeTheme={this.handleChangeTheme} handleSearch={this.handleSearch} search={this.state.search} clearAll={this.clearAll} title="To do App"></SearchAppBar>
+      <Todotabs tab={tab} handleTabChange={this.handleTabChange}></Todotabs>
+      <Todos handleClickOpen={this.handleClickOpen} handleEditOpen={this.handleEditOpen} handleConfirmOpen={this.handleConfirmOpen} id={this.state.id} handleDeleteTodo={this.handleDeleteTodo} handleChangeIndex={this.handleChangeIndex} tab={tab} search={this.state.search} todos={todos} donetodos={this.state.donetodos}></Todos>
+      <SimpleTooltips handleClickOpen={this.handleClickOpen} ></SimpleTooltips>
+      <Namepopup handleFindTodo={this.handleFindTodo} editToDo={this.editToDo} editingId={this.state.editingId} open={this.state.namepopup} handleClose={this.handleClose} addToDo={this.addToDo}></Namepopup>
+      <Infopopup darkTheme={this.state.darkTheme} open={this.state.infoOpen} handleClose={this.handleClose}></Infopopup>
+      <Confirmpopup 
+      popupcontext={this.state.popupcontext} 
+      open={this.state.confirmpopup} 
+      handleClose={this.handleClose} 
+      handleFinishTodo={this.handleFinishTodo} 
+      handleDeleteTodo={this.handleDeleteTodo}>
+      </Confirmpopup>
+      </div>
+  </MuiThemeProvider>
+  </Fragment>
+)}
 }
 
 export default App;

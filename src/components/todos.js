@@ -41,39 +41,38 @@ render(){
   let search = this.props.search; 
   let sortedtodos = this.sortTodos(this.props.tab);
   let todos;
- if (search !=="") {
- todos = sortedtodos.filter(function (todo){return todo.name.indexOf(search) !== -1})
- } else {
- todos = sortedtodos;
- }  
-let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo tab={this.props.tab} id={todo.id} handleClickOpen={this.props.handleClickOpen} handleEditOpen={this.props.handleEditOpen} handleConfirmOpen={this.props.handleConfirmOpen} name={todo.name} done={todo.done} date={todo.date}/></Grid>);
+  if (search !=="") {
+    todos = sortedtodos.filter(function (todo){return todo.name.indexOf(search) !== -1})
+  } else {
+    todos = sortedtodos;
+  }  
+  let todoslist = todos.map((todo, index)=> <Grid item lg={2}  md={4} sm={6} xs={12} key={todo.name+index}><Todo tab={this.props.tab} id={todo.id} handleClickOpen={this.props.handleClickOpen} handleEditOpen={this.props.handleEditOpen} handleConfirmOpen={this.props.handleConfirmOpen} name={todo.name} done={todo.done} date={todo.date}/></Grid>);
 
-    return (   
-        <div>
+  return (   
+      <div>
         <SwipeableViews
-        style={{minHeight: "80vh"}}
+          style={{minHeight: "80vh"}}
           axis={'x'}
           index={tab}
-          onChangeIndex={this.props.handleChangeIndex}
-        >
-        <div style={styles.slide}>
-        <Grid container spacing={24} direction="row">
-        {todoslist}
-        </Grid>
-        </div>
-        <div style={styles.slide}>
-        <Grid container spacing={24} direction="row">
-        {todoslist}
-        </Grid>
-        </div>
-        <div style={styles.slide}>
-        <Grid container spacing={24} direction="row">
-        {todoslist}
-        </Grid>
-        </div>
+          onChangeIndex={this.props.handleChangeIndex}>
+          <div style={styles.slide}>
+            <Grid container spacing={24} direction="row">
+              {todoslist}
+            </Grid>
+          </div>
+          <div style={styles.slide}>
+            <Grid container spacing={24} direction="row">
+              {todoslist}
+            </Grid>
+          </div>
+          <div style={styles.slide}>
+            <Grid container spacing={24} direction="row">
+              {todoslist}
+            </Grid>
+          </div>
         </SwipeableViews>
-        </div>
-      );
+      </div>
+    );
   }
 }
 

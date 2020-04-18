@@ -15,7 +15,7 @@ const darkTheme = createMuiTheme({
     },
   });
   
-  const lighTheme = createMuiTheme({
+const lighTheme = createMuiTheme({
     typography: {
       useNextVariants: true,
     },
@@ -29,6 +29,6 @@ const darkTheme = createMuiTheme({
     },
   });
 
- const myThemes = {darkTheme:darkTheme, lighTheme:lighTheme};
+const myThemes = {darkTheme:darkTheme, lighTheme:lighTheme};
 
-  export default myThemes;
+export default myThemes;

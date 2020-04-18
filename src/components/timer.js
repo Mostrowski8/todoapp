@@ -7,55 +7,56 @@ import Switch from '@material-ui/core/Switch';
 import Collapse from '@material-ui/core/Collapse';
 
 export default class Timer extends Component {
-            state = {
-                detailtimer: null,
-                fromnow: null,
-                detailtimeron: false,
+    state = {
+        detailtimer: null,
+        fromnow: null,
+         detailtimeron: false,
+    }
+
+    updatetime = () => {
+        let date = this.props.date;
+        if (this.state.detailtimeron) {
+            let miliseconds = moment().diff(date, 'miliseconds');
+            let left = moment.duration(miliseconds);
+            let seconds = (left._data.seconds < 1) ? Math.abs(left._data.seconds) : 0;
+            let minutes = (left._data.minutes < 1) ? Math.abs(left._data.minutes) : 0;
+            let hours = (left._data.hours < 1) ? Math.abs(left._data.hours) : 0;
+            let days = (left._data.days < 1) ? Math.abs(left._data.days) : 0;
+            let months = (left._data.months < 1) ? Math.abs(left._data.months) : 0;
+            let years = (left._data.years < 1) ? Math.abs(left._data.years) : 0;
+            let detailtimer = (years ? years + "\xa0years, " : "") + (months ? months + "\xa0months, " : "") + (days ? days + "\xa0days, " : "") + (hours ? hours + "\xa0hours, " : "") + (minutes ? minutes + "\xa0minutes, " : "") + (seconds ? seconds + "\xa0seconds" : "0 seconds");
+            detailtimer = "in " + detailtimer;
+            if (detailtimer === "in 0 seconds") {
+                detailtimer = "Deadline passed!";
             }
 
-            updatetime = () => {
-                let date = this.props.date;
-                if (this.state.detailtimeron) {
-                    let miliseconds = moment().diff(date, 'miliseconds');
-                    let left = moment.duration(miliseconds);
-                    let seconds = (left._data.seconds < 1) ? Math.abs(left._data.seconds) : 0;
-                    let minutes = (left._data.minutes < 1) ? Math.abs(left._data.minutes) : 0;
-                    let hours = (left._data.hours < 1) ? Math.abs(left._data.hours) : 0;
-                    let days = (left._data.days < 1) ? Math.abs(left._data.days) : 0;
-                    let months = (left._data.months < 1) ? Math.abs(left._data.months) : 0;
-                    let years = (left._data.years < 1) ? Math.abs(left._data.years) : 0;
-                    let detailtimer = (years ? years + "\xa0years, " : "") + (months ? months + "\xa0months, " : "") + (days ? days + "\xa0days, " : "") + (hours ? hours + "\xa0hours, " : "") + (minutes ? minutes + "\xa0minutes, " : "") + (seconds ? seconds + "\xa0seconds" : "0 seconds");
-                    detailtimer = "in " + detailtimer;
-                    if (detailtimer === "in 0 seconds") {
-                        detailtimer = "Deadline passed!";
-                    }
-                    this.setState({
-                        detailtimer: detailtimer
-                    })
-                } else {
-                    let fromnow = moment(date).fromNow();
-                    this.setState({
-                        fromnow: fromnow
-                    })
-                }
-            }
+            this.setState({
+                detailtimer: detailtimer
+            })
+        } else {
+            let fromnow = moment(date).fromNow();
+            this.setState({
+                fromnow: fromnow
+            })
+        }
+    }
 
-            handletimerclick = event => {
-                let detailtimeron = !this.state.detailtimeron;
-                this.setState({
-                    detailtimeron: detailtimeron,
-                })
-            }
+    handletimerclick = event => {
+        let detailtimeron = !this.state.detailtimeron;
+        this.setState({
+            detailtimeron: detailtimeron,
+        })
+    }
 
-            componentWillMount() {
-                this.interval = setInterval(this.updatetime, 100);
-            }
+    componentWillMount() {
+        this.interval = setInterval(this.updatetime, 100);
+    }
 
-            componentWillUnmount() {
-                clearInterval(this.interval);
-            }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
-    render(){
+    render() {
         let detailtimer = this.state.detailtimer;
         let fromnow = this.state.fromnow;
         let timerstyle = {fontSize: "1em"}
@@ -86,5 +87,5 @@ export default class Timer extends Component {
 
 Timer.propTypes = {
      date: PropTypes.object.isRequired
-  };
+};
 

@@ -9,79 +9,77 @@ import PropTypes from 'prop-types';
 import Datepopup from './datepopup';
 
 export default class Namepopup extends Component {
- state = {
+  state = {
    todoname: "",
    datepopup: false
- };
+  };
 
- handleChange = e => {
+  handleChange = e => {
    let name = e.target.value;
 
    this.setState({
      todoname: name
    });
- }
+  }
 
- handleDateOpen = () => {
+  handleDateOpen = () => {
    this.setState({
      datepopup: true
    });
- };
+  };
 
- handleDateClose = () => {
+  handleDateClose = () => {
    this.setState({
      datepopup: false
    });
- };
+  };
 
- reset = () => {
+  reset = () => {
    this.setState({
      todoname: ""
    });
- }
+  }
 
-render() {
-      let name = this.state.todoname==="";
-      let handleClose = this.props.handleClose;
-      let currentname;
-      let title = "Create task"
+  render() {
+    let name = this.state.todoname==="";
+    let handleClose = this.props.handleClose;
+    let currentname;
+    let title = "Create task"
       
-if (this.props.editingId > 0){
-let editedtodo = this.props.handleFindTodo();
-currentname = editedtodo.name;
-title = "Change name"
-}
+    if (this.props.editingId > 0) {
+      let editedtodo = this.props.handleFindTodo();
+      currentname = editedtodo.name;
+      title = "Change name"
+    }
+
     return (
       <div>
         <Dialog
           open={this.props.open}
           onClose={(e)=>{handleClose(e)}}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">{title}</DialogTitle>
-          <DialogContent>
-            <TextField onChange={this.handleChange}
-              autoFocus
-              placeholder={currentname}
-              margin="dense"
-              id="todoname"
-              label="Task name"
-              type="text"
-              fullWidth
-            />
+          aria-labelledby="form-dialog-title">
+        <DialogTitle id="form-dialog-title">{title}</DialogTitle>
+        <DialogContent>
+          <TextField onChange={this.handleChange}
+            autoFocus
+            placeholder={currentname}
+            margin="dense"
+            id="todoname"
+            label="Task name"
+            type="text"
+            fullWidth/>
            
            <Datepopup 
-           handleFindTodo = {this.props.handleFindTodo}
-           editToDo = {this.props.editToDo}
-           editingId = {this.props.editingId}
-           onClick={this.handleDateOpen}
-           handleClose={this.props.handleClose}
-           handleDateClose={this.handleDateClose}
-           open={this.state.datepopup}
-           addToDo={this.props.addToDo}
-           reset={this.reset}
-           name={this.state.todoname}
-           /> 
+            handleFindTodo = {this.props.handleFindTodo}
+            editToDo = {this.props.editToDo}
+            editingId = {this.props.editingId}
+            onClick={this.handleDateOpen}
+            handleClose={this.props.handleClose}
+            handleDateClose={this.handleDateClose}
+            open={this.state.datepopup}
+            addToDo={this.props.addToDo}
+            reset={this.reset}
+            name={this.state.todoname}/> 
           </DialogContent>
           <DialogActions>
             <Button onClick={(e)=>{handleClose(e)}} color="primary">
